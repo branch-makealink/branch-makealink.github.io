@@ -14,11 +14,11 @@ function quickLinkNext() {
   var selection = document.querySelector('input[name="quicklinkradios"]:checked').value;
   console.log(selection);
   if (selection == "App") {
-  	window.location = "file:///Users/mhorn/Desktop/branch-makealink.github.io/quick-links-2.html";
+  	window.location = "quick-links-2.html";
   }
 
   if (selection == "Mobile Web") {
-  	window.location = "file:///Users/mhorn/Desktop/branch-makealink.github.io/quick-links-3.html";
+  	window.location = "quick-links-3.html";
   }
 }
 
@@ -28,3 +28,7 @@ function hideForm(){
 function showForm(){
     document.getElementsByClassName("key-value-form-container")[0].style.display = 'block';
 }
+
+$(document).ready(function(){
+  $('[data-toggle="tooltip"]').tooltip();
+});

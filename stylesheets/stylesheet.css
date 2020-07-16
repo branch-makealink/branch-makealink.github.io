@@ -255,6 +255,11 @@ samp {
   left: 5px;
  }
 
+ #summary {
+  font-style: italic;
+  font-size: 12px;
+ }
+
 .buttondesign {
   background-color: #008ae6;
   border: 1px;
