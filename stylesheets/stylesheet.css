@@ -249,6 +249,53 @@ samp {
  * 3. Address margins set differently in Firefox 4+, Safari, and Chrome.
  */
 
+.buttondesign {
+  background-color: #008ae6;
+  border: 1px;
+  color: white;
+  padding: 8px 12px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 12px;
+  margin-left:250px;
+  transition: all 0.5s;
+  cursor: pointer;
+}
+
+.buttondesign span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+}
+
+.buttondesign span:after {
+  content: '\00bb';
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: -20px;
+  transition: 0.3s;
+}
+
+.buttondesign:hover span {
+  padding-right: 15px;
+}
+
+.buttondesign:hover span:after {
+  opacity: 1;
+  right: 0;
+}
+
+.dashboard {
+  background-color: gray;
+  font-size: 16px;
+  position: static;
+  padding: 15px 20px;
+  margin-left: 190px;
+}
+
 button,
 input,
 optgroup,
