@@ -8,14 +8,12 @@
     <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
     <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
     <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print">
-<!--     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"> -->
+    <!--     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"> -->
     <link rel="stylesheet" type="text/css" href="stylesheets/bootstrap.css">
-
     <script src="javascripts/main.js" type="text/javascript" charset="utf-8" async defer></script>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-
     <title>Branch - Make a Link</title>
   </head>
   <body>
@@ -55,18 +53,19 @@
                   <div class="panel-body">
                     <p>Branch integrates with 3rd party Email Service Providers (ESP) as a part of our Universal Email product. These integrations don't require you to manually create links for your campaigns, but rather rely on tagging in the HTML of your email template. Please refer to Branch's <a href="https://help.branch.io/using-branch/docs/email-partners-list"> docs </a> to find your ESP's setup and requirements.</p>
                   </div>
-                  <span class="btn-group">
+                  <div>
                     <a href="https://branch.dashboard.branch.io">
                       <button class="buttondesign" type="button">
-                        Go to Branch Dashboard
+                      Go to Branch Dashboard
                       </button>
                     </a>
+                    <br><br>
                     <a href="https://help.branch.io/using-branch/docs/universal-email-integration-guide#section-7-start-sending-emails-with-flagged-links">
-                      <button class="buttondesign" type="button">
-                        Learn how to make an Email link
+                      <button id="adjust" class="buttondesign" type="button">
+                      Learn how to make an Email link
                       </button>
                     </a>
-                  </span>
+                  </div>
                 </div>
               </div>
               <div>
@@ -78,31 +77,36 @@
                     Should you wish to continue using a Quick Link, you'll need to turn off Click-Tracking on the ESP's side in order for Branch links to function as expected.
                     Always be sure to test Quick Links in Email to ensure proper functionality.
                     <br><br>
-                    <b>Please acknowledge that you wish to proceed with an unsupported use case.</b></p>
-                  </div>
+                  <b>Please acknowledge that you wish to proceed with an unsupported use case.</b></p>
+                  <a href="quicklink">
+                    <button class="buttondesign" type="button">
+                    I acknowledge
+                    </button>
+                  </a>
                 </div>
               </div>
             </div>
           </div>
-          <p>
-            <b>Marketing/Organic</b>
-            <br>
-            These links are referred to as Quick Links, which are commonly used on product pages or for social use. These can be quickly created and designed to handle user flows - bringing a user in to the specific episode of a new TV show, landing them on the same shirt they were looking at in the mobile browser on their device, or bringing them to the App Store to download the app if it's not installed. 
-          </p>
-          <button class="buttondesign" type="button"><span>Make a Quick Link</span></button>
-          <br><br>
-          <p></p>
-          <a href="https://branch.dashboard.branch.io"><button class="buttondesign dashboard" type="button"><span>Go to the Branch Dashboard</span></button></a>
-        </section>
-        <aside id="sidebar">
-          <p>Link Creator Home Page</p>
-          <p>Usage - Organic, Email, Ads</p>
-          <p>Routing - Where to direct the user</p>
-          <p>Review - See how the link works</p>
-          <p>Final Steps</p>
-        </aside>
-      </div>
+        </div>
+        <p>
+          <b>Marketing/Organic</b>
+          <br>
+          These links are referred to as Quick Links, which are commonly used on product pages or for social use. These can be quickly created and designed to handle user flows - bringing a user in to the specific episode of a new TV show, landing them on the same shirt they were looking at in the mobile browser on their device, or bringing them to the App Store to download the app if it's not installed.
+        </p>
+        <button class="buttondesign" type="button"><span>Make a Quick Link</span></button>
+        <br><br>
+        <p></p>
+        <a href="https://branch.dashboard.branch.io"><button class="buttondesign dashboard" type="button"><span>Go to the Branch Dashboard</span></button></a>
+      </section>
+      <aside id="sidebar">
+        <p>Link Creator Home Page</p>
+        <p>Usage - Organic, Email, Ads</p>
+        <p>Routing - Where to direct the user</p>
+        <p>Review - See how the link works</p>
+        <p>Final Steps</p>
+      </aside>
     </div>
-    
-  </body>
+  </div>
+  
+</body>
 </html>

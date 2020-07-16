@@ -249,6 +249,11 @@ samp {
  * 3. Address margins set differently in Firefox 4+, Safari, and Chrome.
  */
 
+ #adjust {
+  position: relative;
+  right: 20px;
+ }
+
 .buttondesign {
   background-color: #008ae6;
   border: 1px;
