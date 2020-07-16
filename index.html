@@ -8,9 +8,9 @@
     <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
     <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
     <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print">
-    <!--[if lt IE 9]>
-    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
+
+    <script src="javascripts/main.js" type="text/javascript" charset="utf-8" async defer></script>
+
     <title>Branch - Make a Link</title>
   </head>
   <body>
@@ -37,8 +37,16 @@
             <br>
             Branch integrates with 3rd party Email Service Providers (ESP) as a part of our Universal Email product. These integrations don't require you to manually create links for your campaigns, but rather rely on tagging in the HTML of your email template. Please refer to <a href='https://help.branch.io/using-branch/docs/branch-universal-email'> Branch's Universal Email docs </a> to find your ESP's setup and requirements.
           </p>
-          <button class="buttondesign" type="button"><span>Make an Email Link</span></button>
+          <button class="buttondesign" type="button" onClick="emailLinkCreator()"><span>Make an Email Link</span></button>
           <br><br>
+          <div id="emailBox">
+            <form class="form">
+              <select name="ESP" multiple>
+                <option value="">Sendgrid</option>
+                <option value="">Braze (via Sendgrid)</option>
+                <option value="">Braze (via Mailjet)</option>
+              </select>
+          </div>
           <p>
             <b>Marketing/Organic</b>
             <br>

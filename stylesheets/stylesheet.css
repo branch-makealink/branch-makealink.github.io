@@ -288,12 +288,30 @@ samp {
   right: 0;
 }
 
+/* Style the collapsible content. Note: hidden by default */
+#emailBox {
+  padding: 0 18px;
+  display: none;
+  overflow: hidden;
+  background-color: #f1f1f1;
+}
+
 .dashboard {
   background-color: gray;
+  color: white;
   font-size: 16px;
   position: static;
   padding: 15px 20px;
   margin-left: 190px;
+}
+
+/* Style the collapsible content. Note: hidden by default */
+.content {
+  padding: 0 18px;
+  background-color: white;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.2s ease-out;
 }
 
 button,
