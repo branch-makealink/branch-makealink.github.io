@@ -456,10 +456,10 @@ header {
 }
 
 header h1 {
-  width: 540px;
+  width: 700px;
   margin-top: 0;
   margin-bottom: 0.2em;
-  font-size: 72px;
+  font-size: 60px;
   font-weight: normal;
   line-height: 1;
   color: #fff;
@@ -479,7 +479,7 @@ header h2 {
 
 .inner {
   position: relative;
-  width: 940px;
+  width: 1200px;
   margin: 0 auto;
 }
 
