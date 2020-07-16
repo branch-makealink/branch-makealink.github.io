@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link href='https://fonts.googleapis.com/css?family=Epilogue' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print">
+    <!-- CSS only -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <title>Branch - Make a Link</title>
+  </head>
+  <body>
+    <header>
+      <div class="inner">
+        <h1>Branch Link Creation</h1>
+        <h2>Learn How to Make a Branch Link!</h2>
+      </div>
+    </header><br><br>
+    <div class="border border-dark rounded container">
+      <br>
+      <strong>Should app users be sent to the app or mobile web 3?</strong><br><br>
+      <div class="form-check">
+         <input class="form-check-input" type="radio" name="quicklinkradios" id="radio1" value="App" onChange="quickLinkTypeSelection()"checked>
+         <label class="form-check-label" for="exampleRadios1">
+         App
+         </label>
+        <div class="btn-group">
+          <button type="button" class="btn btn-info">Info</button>
+          <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <span class="caret"></span>
+            <span class="sr-only">Toggle Dropdown</span>
+          </button>
+          <ul class="dropdown-menu">
+            <li><span>Branch links by default will open the app (iOS or Android) with a single link.</span></li>
+          </ul>
+        </div>
+      </div><br>
+      <div class="form-check">
+         <input class="form-check-input" type="radio" name="quicklinkradios" id="radio2" value="Mobile Web" onChange="quickLinkTypeSelection()">
+         <label class="form-check-label" for="exampleRadios2">
+         Mobile Web
+         </label>
+      
+        <div class="btn-group">
+          <button type="button" class="btn btn-info">Info</button>
+          <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <span class="caret"></span>
+            <span class="sr-only">Toggle Dropdown</span>
+          </button>
+          <ul class="dropdown-menu">
+            <li><span>Branch links by default open the app for app users. We'll need to add a parameter for the link that forces mobile web to open instead. That parameter is $web_only=true. Additionally, for Android, you need to add _webonly and /e/ to the app.link subdomain.  For example, https://test.app.link/abc would become https://test_webonly.app.link/e/abc</span></li>
+          </ul>
+        </div><br><br>
+        <button type="button" class="btn btn-success" onclick="quickLinkNext()">Next</button><br><br>
+      </div>
+    
+    <!-- JS, Popper.js, and jQuery -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+    <script src="javascripts/main.js"></script>
+  </body>
+</html>
