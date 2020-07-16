@@ -1,13 +1,12 @@
 // Ads Link Creation
 
 // Email Link Creation
-function emailLinkCreator() {
-	var content = document.getElementById('emailBox');
-
-	console.log(content.style.display)
-    if (content.style.display === "block") {
-      content.style.display = "none";
+function emailButtonToggle() {
+	var yes = document.getElementById("emailYes");
+    
+    if (yes.checked == false) {
+        yes.checked = true;
     } else {
-      content.style.display = "block";
+    	yes.checked = false;
     }
 };

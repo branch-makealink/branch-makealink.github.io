@@ -8,8 +8,13 @@
     <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
     <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
     <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print">
+<!--     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"> -->
+    <link rel="stylesheet" type="text/css" href="stylesheets/bootstrap.css">
 
     <script src="javascripts/main.js" type="text/javascript" charset="utf-8" async defer></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 
     <title>Branch - Make a Link</title>
   </head>
@@ -37,15 +42,47 @@
             <br>
             Branch integrates with 3rd party Email Service Providers (ESP) as a part of our Universal Email product. These integrations don't require you to manually create links for your campaigns, but rather rely on tagging in the HTML of your email template. Please refer to <a href='https://help.branch.io/using-branch/docs/branch-universal-email'> Branch's Universal Email docs </a> to find your ESP's setup and requirements.
           </p>
-          <button class="buttondesign" type="button" onClick="emailLinkCreator()"><span>Make an Email Link</span></button>
-          <br><br>
-          <div id="emailBox">
-            <form class="form">
-              <select name="ESP" multiple>
-                <option value="">Sendgrid</option>
-                <option value="">Braze (via Sendgrid)</option>
-                <option value="">Braze (via Mailjet)</option>
-              </select>
+          <p>
+            <a class="buttondesign" data-toggle="collapse" href="#collapseEmail"><span>Make an Email Link</span></a>
+          </p>
+          <div class="collapse" id="collapseEmail">
+            <div class="card card-body">
+              <span><b>Are you using a Branch Universal Email Integration?</b></span>
+              <div>
+                <input type="radio" class="btn-group-toggle" name="Yes" data-toggle="collapse" href="#collapseEmailYes">
+                <label for="Yes">Yes</label>
+                <div class="panel-collapse collapse" id="collapseEmailYes">
+                  <div class="panel-body">
+                    <p>Branch integrates with 3rd party Email Service Providers (ESP) as a part of our Universal Email product. These integrations don't require you to manually create links for your campaigns, but rather rely on tagging in the HTML of your email template. Please refer to Branch's <a href="https://help.branch.io/using-branch/docs/email-partners-list"> docs </a> to find your ESP's setup and requirements.</p>
+                  </div>
+                  <span class="btn-group">
+                    <a href="https://branch.dashboard.branch.io">
+                      <button class="buttondesign" type="button">
+                        Go to Branch Dashboard
+                      </button>
+                    </a>
+                    <a href="https://help.branch.io/using-branch/docs/universal-email-integration-guide#section-7-start-sending-emails-with-flagged-links">
+                      <button class="buttondesign" type="button">
+                        Learn how to make an Email link
+                      </button>
+                    </a>
+                  </span>
+                </div>
+              </div>
+              <div>
+                <input type="radio" id="emailNo" name="No" data-toggle="collapse" href="#collapseEmailNo">
+                <label for="No">No</label>
+                <div>
+                  <div class="panel-collapse collapse" id="collapseEmailNo">
+                    <p>Using Branch Quick Links in email campaigns is not a supported use case. Branch recommends using our pre-built integrations with 3rd party Email Service Providers (ESP) as a part of our <a href="https://help.branch.io/using-branch/docs/branch-universal-email"> Universal Email </a> product.
+                    Should you wish to continue using a Quick Link, you'll need to turn off Click-Tracking on the ESP's side in order for Branch links to function as expected.
+                    Always be sure to test Quick Links in Email to ensure proper functionality.
+                    <br><br>
+                    <b>Please acknowledge that you wish to proceed with an unsupported use case.</b></p>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
           <p>
             <b>Marketing/Organic</b>
