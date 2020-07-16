@@ -1,8 +1,3 @@
-<<<<<<< HEAD
-// Ads Link Creation
-
-// Email Link Creation
-=======
 console.log('This would be the main JS file.');
 $(document).ready(function(){  
 	var selection = document.querySelector('input[name="quicklinkradios"]:checked').value;
@@ -33,4 +28,3 @@ function hideForm(){
 function showForm(){
     document.getElementsByClassName("key-value-form-container")[0].style.display = 'block';
 }
->>>>>>> remove useless code
