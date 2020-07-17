@@ -1,13 +1,13 @@
-console.log('This would be the main JS file.');
+console.log('Can\'t find what you\'re looking for? Check out https://wizard.docs.branch.io or reach out to support@branch.io!');
+
 $(document).ready(function(){  
 	var selection = document.querySelector('input[name="quicklinkradios"]:checked').value;
-	console.log(selection);	
+
 	document.getElementsByClassName("key-value-form-container")[0].style.display = 'none';
 });
 
 function quickLinkTypeSelection() {
   var selection = document.querySelector('input[name="initRadios"]:checked').value;
-  console.log(selection);
 
   if (selection == "App") {
   	document.querySelector('#initPageButton').innerHTML = "Build Deep Link";
@@ -20,7 +20,6 @@ function quickLinkTypeSelection() {
 // saving this in case we plan to send user ahead a few pages 
 function quickLinkNext() {
   var selection = document.querySelector('input[name="quicklinkradios"]:checked').value;
-  console.log(selection);
 
   page = parseInt(document.location.href.slice(-6,-5),10);
 
