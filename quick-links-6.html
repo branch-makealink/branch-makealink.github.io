@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link href='https://fonts.googleapis.com/css?family=Epilogue' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print">
+    <!-- CSS only -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <title>Branch - Make a Link</title>
+  </head>
+  <body>
+    <header>
+      <div class="inner">
+        <h1>Branch Link Creation</h1>
+        <h2>Learn How to Make a Branch Link!</h2>
+      </div>
+    </header><br><br>
+    <div class="border border-dark rounded container">
+      <br>
+      <strong>Do you want this link to function as a Branch Link (deep link for experience purposes) without tracking attribution?</strong><br><br>
+      <div class="form-check">
+        <input class="form-check-input" type="radio" id="$deeplink_no_attribution" name="quicklinkRadios" value="true" onChange="quickLinkTypeSelection()"checked>
+        <label class="form-check-label">
+          Yes
+        </label>
+        <div class="btn-group">
+          <a href="#" data-toggle="tooltip" data-placement="right" title="I want my link to only be used for user experience,and not for attribution"><small>- what does this mean?</small></a>
+        </div>
+        <br>
+        <label id="summary">When a Quick Link has either link data or a query param $deeplink_no_attribution=true, clicking the link will still deep link your customer into your app but the install, open, purchase, etc. and all future events will not be attributed to that click and show in your dashboard analytic reports, charts, cohorts and exported data.
+        </label>
+      </div><br>
+      <div class="form-check">
+        <input class="form-check-input" type="radio" name="quicklinkRadios" value="No" onChange="quickLinkTypeSelection()">
+        <label class="form-check-label">
+          No
+        </label>
+        <div class="btn-group">
+          <a href="#" data-toggle="tooltip" data-placement="right" title="I want my link to get attribution for events"><small>- what does this mean?</small></a>
+        </div>
+        <br>
+        <label id="summary">This link will track resulting actions in the Branch dashboard, make sure you set analytics tags in the next section for reporting purposes.
+        </label>
+      </div>
+      <br>
+      <a href="quick-links-7.html"></a><button type="button" class="btn btn-success" onclick="next(), recordLinkData()">Next</button><br><br>
+    </div>
+    
+    <!-- JS, Popper.js, and jQuery -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+    <script src="javascripts/main.js"></script>
+  </body>
+</html>
