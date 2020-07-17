@@ -27,10 +27,13 @@ function next() {
 	if (isNaN(page)) { page = 0 };
 	page += 1;
 
-
-	window.location = "https://branch-makealink.github.io/quick-links-" + page + ".html";
+	window.location = "quick-links-" + page + ".html";
 }
 
+// Next Page
+function back() {
+	window.history.back();
+}
 
 // ------------- QUICK LINKS PAGE 1 -------------
 // Set web_only flag on link if checked
@@ -38,9 +41,9 @@ function quickLinkTypeSelection() {
   var selection = document.querySelector('input[name="initRadios"]:checked').value;
 
   if (selection == "App") {
-  	document.querySelector('#initPageButton').innerHTML = "Build Deep Link";
+  	document.querySelector('#next').innerHTML = "Build Deep Link";
   }	else {
-  	document.querySelector('#initPageButton').innerHTML = "Build Web Only Link";
+  	document.querySelector('#next').innerHTML = "Build Web Only Link";
   	localStorage.setItem("$web_only",true);
   }
 };

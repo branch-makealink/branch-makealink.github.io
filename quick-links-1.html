@@ -48,7 +48,8 @@
         <label id="summary">Branch links by default open the app for app users. We'll need to add a parameter for the link that forces mobile web to open instead. That parameter is $web_only=true. Additionally, for Android, you need to add _webonly and /e/ to the app.link subdomain. For example, https://test.app.link/abc would become https://test_webonly.app.link/e/abc</label>
       </div>
       <br><br>
-      <button type="button" class="btn btn-success" id="initPageButton" onclick="quickLinkNext()">Next</button><br><br>
+      <button type="button" class="btn btn-success" onclick="back()">Back</button>
+      <button type="button" class="btn btn-success" id="next" onclick="quickLinkNext()">Next</button><br><br>
     </div>
     
     <!-- JS, Popper.js, and jQuery -->
