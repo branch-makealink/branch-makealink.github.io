@@ -23,6 +23,8 @@ $(document).ready(function(){
 // Next Page
 function next() {
 	page = parseInt(document.location.href.slice(-6,-5),10);
+
+	if (isNaN(page)) { page = 0 };
 	page += 1;
 
 	window.location = "quick-links-" + page + ".html";
