@@ -260,6 +260,11 @@ samp {
   font-size: 12px;
  }
 
+ #next {
+  position: relative;
+  right: -960px;
+ }
+
 .buttondesign {
   background-color: #008ae6;
   border: 1px;
