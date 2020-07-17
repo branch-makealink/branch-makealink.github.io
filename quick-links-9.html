@@ -37,15 +37,15 @@
    
       <form class="key-value-form-container">
         <div class="form-group" id="utmtextfields">
-          <input type="value" class="form-control" id="utm_medium" aria-describedby="utm_medium" placeholder="UTM_Medium (Branch “Feature”)">
-          <input type="value" class="form-control" id="utm_medium" aria-describedby="utm_medium" placeholder="UTM_Source (Branch “Channel”)">
-          <input type="value" class="form-control" id="utm_medium" aria-describedby="utm_medium" placeholder="UTM_Campaign (Branch “Campaign”)">
-          <input type="value" class="form-control" id="utm_medium" aria-describedby="utm_medium" placeholder="UTM_Content (Branch “Tags”)">
+          <input type="value" class="form-control" id="~feature" placeholder="UTM_Medium (Branch “Feature”)" data-toggle="tooltip" data-placement="top" title="">
+          <input type="value" class="form-control" id="~channel" placeholder="UTM_Source (Branch “Channel”)" data-toggle="tooltip" data-placement="top" title="">
+          <input type="value" class="form-control" id="~campaign" placeholder="UTM_Source (Branch “Channel”)" data-toggle="tooltip" data-placement="top" title="">
+          <input type="value" class="form-control" id="~tags" placeholder="UTM_Content (Branch “Tags”)" data-toggle="tooltip" data-placement="top" title="">
           <br>
           <label id="summary">Extra fields for additional link data you want to add, like a promo code</label>
         </div>
       </form><br>
-      <button type="button" class="btn btn-success" onclick="quickLinkNext()">Next</button><br><br>
+      <a href="quick-links-10.html"></a><button type="button" class="btn btn-success" onclick="next(), recordLinkData() ">Next</button><br><br>
     </div>
     
     <!-- JS, Popper.js, and jQuery -->
