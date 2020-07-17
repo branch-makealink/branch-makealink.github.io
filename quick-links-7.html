@@ -24,44 +24,24 @@
     </header><br><br>
     <div class="border border-dark rounded container">
       <br>
-      <strong>What web URLs do you want to send users to?</strong><br><br>
+      <strong>What do you want to name this link (Marketing Title)?</strong><br><br>
       <form class="key-value-form-container">
-        <b class="form-text">iOS</b>
-        <small id="summary">Send iPhone/iPad users to this website.</small>
+        <b class="form-text">Enter a name for your link.
+            </b>
+        <small id="summary">Make sure to name it something you will recognize!</small>
         <div class="row">
           <div class="col">
-            <input type="value" class="form-control" readonly placeholder="$ios_url">
+            <input type="value" class="form-control" readonly placeholder="$marketing_title">
           </div>=
           <div class="col">
-            <input type="value" class="form-control" id="ios_url" placeholder="Enter a URL from your website" data-toggle="tooltip" data-placement="top" title="Remove www. if it's prepended and swap with http:// or https://">
+            <input type="value" class="form-control" id="$marketing_title" placeholder="Enter a name for your link" data-toggle="tooltip" data-placement="top" title="">
           </div>
         </div>
         <br>
-        <b class="form-text">Android</b>
-        <small id="summary">Send Android users to this website.</small>
-        <div class="row">
-          <div class="col">
-            <input type="value" class="form-control" readonly placeholder="$android_url">
-          </div>=
-          <div class="col">
-            <input type="value" class="form-control" id="android_url" placeholder="Enter a URL from your website" data-toggle="tooltip" data-placement="top" title="Remove www. if it's prepended and swap with http:// or https://">
-          </div>
-        </div>
-        <br>
-        <b class="form-text">Desktop</b>
-        <small id="summary">Send Desktop/Mac users to this website.</small>
-        <div class="row">
-          <div class="col">
-            <input type="value" class="form-control" readonly placeholder="$desktop_url">
-          </div>=
-          <div class="col">
-            <input type="value" class="form-control" id="desktop_url" placeholder="Enter a URL from your website" data-toggle="tooltip" data-placement="top" title="Remove www. if it's prepended and swap with http:// or https://">
-          </div>
-        </div>
       </form>
       <br>
       <button type="button" class="btn btn-success" onclick="back()">Back</button>
-      <button type="button" class="btn btn-success" id="next" onclick="next(); recordRedirects()">Next</button><br><br>
+      <a href="quick-links-8.html"></a><button type="button" class="btn btn-success" onclick="next(), recordLinkData() ">Next</button><br><br>
     </div>
     
     <!-- JS, Popper.js, and jQuery -->

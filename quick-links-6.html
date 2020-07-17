@@ -24,44 +24,34 @@
     </header><br><br>
     <div class="border border-dark rounded container">
       <br>
-      <strong>What web URLs do you want to send users to?</strong><br><br>
-      <form class="key-value-form-container">
-        <b class="form-text">iOS</b>
-        <small id="summary">Send iPhone/iPad users to this website.</small>
-        <div class="row">
-          <div class="col">
-            <input type="value" class="form-control" readonly placeholder="$ios_url">
-          </div>=
-          <div class="col">
-            <input type="value" class="form-control" id="ios_url" placeholder="Enter a URL from your website" data-toggle="tooltip" data-placement="top" title="Remove www. if it's prepended and swap with http:// or https://">
-          </div>
+      <strong>Do you want this link to function as a Branch Link (deep link for experience purposes) without tracking attribution?</strong><br><br>
+      <div class="form-check">
+        <input class="form-check-input" type="radio" id="$deeplink_no_attribution" name="quicklinkRadios" value="true" onChange="quickLinkTypeSelection()"checked>
+        <label class="form-check-label">
+          Yes
+        </label>
+        <div class="btn-group">
+          <a href="#" data-toggle="tooltip" data-placement="right" title="I want my link to only be used for user experience,and not for attribution"><small>- what does this mean?</small></a>
         </div>
         <br>
-        <b class="form-text">Android</b>
-        <small id="summary">Send Android users to this website.</small>
-        <div class="row">
-          <div class="col">
-            <input type="value" class="form-control" readonly placeholder="$android_url">
-          </div>=
-          <div class="col">
-            <input type="value" class="form-control" id="android_url" placeholder="Enter a URL from your website" data-toggle="tooltip" data-placement="top" title="Remove www. if it's prepended and swap with http:// or https://">
-          </div>
+        <label id="summary">When a Quick Link has either link data or a query param $deeplink_no_attribution=true, clicking the link will still deep link your customer into your app but the install, open, purchase, etc. and all future events will not be attributed to that click and show in your dashboard analytic reports, charts, cohorts and exported data.
+        </label>
+      </div><br>
+      <div class="form-check">
+        <input class="form-check-input" type="radio" name="quicklinkRadios" value="No" onChange="quickLinkTypeSelection()">
+        <label class="form-check-label">
+          No
+        </label>
+        <div class="btn-group">
+          <a href="#" data-toggle="tooltip" data-placement="right" title="I want my link to get attribution for events"><small>- what does this mean?</small></a>
         </div>
         <br>
-        <b class="form-text">Desktop</b>
-        <small id="summary">Send Desktop/Mac users to this website.</small>
-        <div class="row">
-          <div class="col">
-            <input type="value" class="form-control" readonly placeholder="$desktop_url">
-          </div>=
-          <div class="col">
-            <input type="value" class="form-control" id="desktop_url" placeholder="Enter a URL from your website" data-toggle="tooltip" data-placement="top" title="Remove www. if it's prepended and swap with http:// or https://">
-          </div>
-        </div>
-      </form>
+        <label id="summary">This link will track resulting actions in the Branch dashboard, make sure you set analytics tags in the next section for reporting purposes.
+        </label>
+      </div>
       <br>
       <button type="button" class="btn btn-success" onclick="back()">Back</button>
-      <button type="button" class="btn btn-success" id="next" onclick="next(); recordRedirects()">Next</button><br><br>
+      <a href="quick-links-7.html"></a><button type="button" class="btn btn-success" onclick="next(), recordLinkData()">Next</button><br><br>
     </div>
     
     <!-- JS, Popper.js, and jQuery -->

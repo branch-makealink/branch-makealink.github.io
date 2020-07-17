@@ -12,15 +12,6 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-    <script type="text/javascript">    
-    	(function(b,r,a,n,c,h,_,s,d,k){if(!b[n]||!b[n]._q){for(;s<_.length;)c(h,_[s++]);d=r.createElement(a);d.async=1;d.src="https://cdn.branch.io/branch-latest.min.js";k=r.getElementsByTagName(a)[0];k.parentNode.insertBefore(d,k);b[n]=h}})(window,document,"script","branch",function(b,r){b[r]=function(){b._q.push([r,arguments])}},{_q:[],_v:1},"addListener applyCode autoAppIndex banner closeBanner closeJourney creditHistory credits data deepview deepviewCta first getCode init link logout redeem referrals removeListener sendSMS setBranchViewData setIdentity track validateCode trackCommerceEvent logEvent disableTracking".split(" "), 0);
-      //to do: replace key with key set from localStorage on quick-links-10
-      branch.init('key_live_omPdKap615NW52zlTUvXEklayEiTWfyW', function(err, data) {
-      console.log(err, data);
-      console.log("hi")
-    });
-    </script>
-  
     <title>Branch - Make a Link</title>
   </head>
   <body>
@@ -32,16 +23,46 @@
     </header><br><br>
     <div class="border border-dark rounded container">
       <br>
-      <strong>Congrats you’ve made a Branch link!</strong>
-        <br>
-      <form class="key-value-form-container">
-        <div class="form-group" id="utmtextfields">
-          <input type="text" class="form-control" id="marketing_title" value="YOUR MARKETING TITLE POPULATED FROM THE PREVIOUS PAGE" disabled/>
-          <strong><input type="text" class="form-control" id="branch_key" value="YOUR BRANCH KEY POPULATED FROM THE PREVIOUS PAGE" disabled/></strong>
+      <strong>Will your link be visible or hidden (behind an element such as an imagem, button or hyperlink text)?</strong><br><br>
+      <div class="form-check">
+        <input class="form-check-input" type="radio" name="quicklinkRadios" value="Hidden" onclick="hideForm();"checked>
+        <label class="form-check-label">
+          Hidden
+        </label>
+        <div class="btn-group">
+          <a href="#" data-toggle="tooltip" data-placement="right" title="Branch links by default will assign a random string of characters to your link."><small>- what does this mean?</small></a>
         </div>
+        <br>
+        <label id="summary">If the link will not be seen, we will generate a random string to append </label>
+      </div><br>
+      <div class="form-check">
+        <input class="form-check-input" type="radio" name="quicklinkRadios" value="Visible" onclick="showForm();">
+        <label class="form-check-label">
+          Visible
+        </label>
+        <div class="btn-group">
+          <a href="#" data-toggle="tooltip" data-placement="right" title="You can change your link alias to a vanity URL to reduce character counts or provide context about the link."><small>- what does this mean?</small></a>
+        </div>
+        <br>
+        <label id="summary">Enter the vanity alias that you want at the end of your link
+            An alias can’t be changed after link is built and two links cannot have the same alias.
+        </label>
+      </div>
+      <form class="key-value-form-container">
+        <b class="form-text">Vanity Alias</b>
+        <small id="summary"></small>
+        <div class="row">
+          <div class="col">
+            <input type="value" class="form-control" readonly placeholder="$alias">
+          </div>=
+          <div class="col">
+            <input type="value" class="form-control" id="$alias" placeholder="Enter your vanity alias" data-toggle="tooltip" data-placement="top" title="this will be appended to your link for appearance purposes">
+          </div>
+        </div>
+        <br>
       </form><br>
       <button type="button" class="btn btn-success" onclick="back()">Back</button>
-      <button type="button" class="btn btn-success" onclick="homepage()">Home Page</button><br><br>
+      <a href="quick-links-9.html"></a><button type="button" class="btn btn-success" onclick="next(), recordLinkData()">Next</button></a><br><br>
     </div>
     
     <!-- JS, Popper.js, and jQuery -->
