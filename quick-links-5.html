@@ -29,21 +29,21 @@
       <small id="summary">(i.e. Organic post, Story, Bio, etc.)</small>
       <br><br>
       <div class="form-check">
-        <input class="form-check-input" type="radio" name="quicklinkradios" id="radio1" value="App" onChange="quickLinkTypeSelection()"checked>
-        <label class="form-check-label" for="exampleRadios1">
+        <input class="form-check-input" type="radio" name="deepviewradios" value="Yes" onChange="addDeepviews()"checked>
+        <label class="form-check-label">
           Yes
         </label>
         <div class="btn-group">
           <a href="#" data-toggle="tooltip" data-placement="right" title="I want users to be able to deep link into my app after clicking on a link in Facebook/Twitter etc."><small>- what does this mean?</small></a>
         </div>
         <br>
-        <label id="summary">Social media platforms like Facebook, Twitter open in-app web browsers when users click on content. In order to deep link users out of those platforms, you'll want the mobile redirects to be set to <a href="https://blog.branch.io/branch-deepviews-the-missing-link-in-app-discovery/"> Deepviews (a Branch landing page)</a>. 
+        <label id="summary">Social media platforms like Facebook, Twitter open in-app web browsers when users click on content. In order to deep link users out of those platforms, you'll want the mobile redirects to be set to <a href="https://blog.branch.io/branch-deepviews-the-missing-link-in-app-discovery/"> Deepviews (a Branch landing page)</a>.
         <br><br>
         When the user redirects through our Deepviews, we can guarantee we're setting a cookie in the in-app webview. This allows Branch to open the app directly from the social feeds on subsequent clicks.
       </div><br>
       <div class="form-check">
-        <input class="form-check-input" type="radio" name="quicklinkradios" id="radio2" value="Mobile Web" onChange="quickLinkTypeSelection()">
-        <label class="form-check-label" for="exampleRadios2">
+        <input class="form-check-input" type="radio" name="deepviewradios" value="No" onChange="addDeepviews()">
+        <label class="form-check-label">
           Mobile Web
         </label>
         <div class="btn-group">
@@ -52,15 +52,15 @@
         <br>
         <label id="summary">Sometimes you won’t want to interrupt the user’s flow by sending them to the App Store/Play Store. Instead you can let them continue to mobile web, with the Branch Web SDK, we’ll track resulting actions on your website as well!
         </label>
-        </div>
-        <br>
-        <button type="button" class="btn btn-success" onclick="next()">Next</button><br><br>
       </div>
-      
-      <!-- JS, Popper.js, and jQuery -->
-      <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-      <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-      <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
-      <script src="javascripts/main.js"></script>
-    </body>
-  </html>
+      <br>
+      <button type="button" id="next" class="btn btn-success" onclick="next()">Next</button><br><br>
+    </div>
+    
+    <!-- JS, Popper.js, and jQuery -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+    <script src="javascripts/main.js"></script>
+  </body>
+</html>

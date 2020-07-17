@@ -51,17 +51,17 @@
         <div class="form-group" id="keyvaluepairtextfields">
           <small class="form-text text-muted">Enter your Key and Value pairs that correspond to the page you want to open in the app.
           If you don’t know your routing structure right now, you can click Continue and add later in the dashboard!</small><br>
-          <input type="value" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Deep Link Route - $canonical_url, $deeplink_path">
-          <input type="value" class="form-control" id="exampleInputPassword1" placeholder="Example: https://example.com/p/product-sku-1234">
+          <input type="value" class="form-control" name="key" placeholder="Deep Link Route - $canonical_url, $deeplink_path">
+          <input type="value" class="form-control" name="value" placeholder="Example: https://example.com/p/product-sku-1234">
           <br>
           <label id="summary">Extra fields for additional link data you want to add, like a promo code</label>
-          <input class="form-control form-control-sm" type="text" placeholder="Key">
-          <input class="form-control form-control-sm" type="text" placeholder="Value"><br>
-          <input class="form-control form-control-sm" type="text" placeholder="Key">
-          <input class="form-control form-control-sm" type="text" placeholder="Value">
+          <input class="form-control form-control-sm" type="text" name="key2" placeholder="Key">
+          <input class="form-control form-control-sm" type="text" name="value2" placeholder="Value"><br>
+          <input class="form-control form-control-sm" type="text" name="key3" placeholder="Key">
+          <input class="form-control form-control-sm" type="text" name="value3" placeholder="Value">
         </div>
       </form><br>
-      <a href="quick-links-3.html"><button type="button" class="btn btn-success" onclick="next()">Next</button></a><br><br>
+      <a href="quick-links-3.html"><button type="button" class="btn btn-success" onclick="next(), recordLinkData()">Next</button></a><br><br>
     </div>
     
     <!-- JS, Popper.js, and jQuery -->
