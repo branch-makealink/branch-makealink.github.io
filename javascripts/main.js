@@ -45,7 +45,7 @@ function quickLinkTypeSelection() {
 // ------------- QUICK LINKS PAGE 2 -------------
 // Show specific page collapse
 $(document).ready(function(){  
-	var selection = document.querySelector('input[name="quicklinkradios"]:checked').value;
+	var selection = document.querySelector('input[name="quicklinkRadios"]:checked').value;
 
 	document.getElementsByClassName("key-value-form-container")[0].style.display = 'none';
 });
@@ -111,7 +111,7 @@ function recordRedirects() {
 // ------------- QUICK LINKS PAGE 5 -------------
 // record deepview keys, change button text
 function addDeepviews() {
-  var selection = document.querySelector('input[name="deepviewradios"]:checked').value;
+  var selection = document.querySelector('input[name="deepviewRadios"]:checked').value;
 
   if (selection == "Yes") {
   	document.querySelector('#next').innerHTML = "Add Deepviews";

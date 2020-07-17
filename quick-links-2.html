@@ -25,8 +25,8 @@
       <br>
       <strong>Do you want the app to open to the homepage or to a specific page?</strong><br><br>
       <div class="form-check">
-        <input class="form-check-input" type="radio" name="quicklinkradios" id="radio1" value="Homepage" onclick="hideForm();"checked>
-        <label class="form-check-label" for="exampleRadios1">
+        <input class="form-check-input" type="radio" name="quicklinkRadios" value="Homepage" onclick="hideForm();"checked>
+        <label class="form-check-label">
           Homepage
         </label>
         <div class="btn-group">
@@ -36,8 +36,8 @@
         <label id="summary">If no deep linking is desired, you do not need to add any parameters and can leave the link data blank.</label>
       </div><br>
       <div class="form-check">
-        <input class="form-check-input" type="radio" name="quicklinkradios" id="radio2" value="Specific Page" onclick="showForm();">
-        <label class="form-check-label" for="exampleRadios2">
+        <input class="form-check-input" type="radio" name="quicklinkRadios" value="Specific Page" onclick="showForm();">
+        <label class="form-check-label">
           Specific Page
         </label>
         <div class="btn-group">
@@ -45,7 +45,7 @@
         </div>
         <br>
         <label id="summary">To open a specific page of your app, you'll need to have a deep link routing structure in place and add those parameters to your link. Apps use Key and Value pairs to tell the app what to do when opened.
-          Common routing structures include canonical_url, deeplink_path, or simple keys such as page=account_summary.</label>
+        Common routing structures include canonical_url, deeplink_path, or simple keys such as page=account_summary.</label>
       </div>
       <form class="key-value-form-container">
         <div class="form-group" id="keyvaluepairtextfields">
