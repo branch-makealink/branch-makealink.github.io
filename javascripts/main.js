@@ -27,7 +27,8 @@ function next() {
 	if (isNaN(page)) { page = 0 };
 	page += 1;
 
-	window.location = "quick-links-" + page + ".html";
+
+	window.location = "https://branch-makealink.github.io/quick-links-" + page + ".html";
 }
 
 
