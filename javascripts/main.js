@@ -24,7 +24,11 @@ $(document).ready(function(){
 function next() {
 	page = parseInt(document.location.href.slice(-6,-5),10);
 
-	if (isNaN(page)) { page = 0 };
+	if (isNaN(page)) { 
+		page = 0;
+	} else if (page == 0) {
+		page = 10;
+	}
 	page += 1;
 
 	window.location = "quick-links-" + page + ".html";
@@ -33,6 +37,11 @@ function next() {
 // Next Page
 function back() {
 	window.history.back();
+}
+
+// Home Page
+function homepage() {
+	window.location = "index.html";
 }
 
 // ------------- QUICK LINKS PAGE 1 -------------
@@ -74,19 +83,29 @@ function recordLinkData() {
 	var valueLength = valueData.length;
 	var valueInput;
 
+	var keyArray = [];
+	var valueArray = [];
+
 	for (var i = 0; i < keyLength; i++) {
 		keyInput = keyData[i];
 		if (keyInput.value) {
-			localStorage.setItem(keyInput, keyInput.value);
+			keyArray.push(keyInput.value);
 		}
 	};
 
 	for (var i = 0; i < valueLength; i++) {
 		valueInput = valueData[i];
 		if (valueInput.value) {
-			localStorage.setItem(valueInput, valueInput.value);
+			valueArray.push(valueInput.value)
 		}
 	};
+
+	// store as JSON
+	var deepLinkData = Object.create(null); keyArray.forEach((e, i) => deepLinkData[e] = valueArray[i]);
+	console.log(deepLinkData);
+
+	// convert to string for localStorage
+	localStorage.setItem('deepLinkData', JSON.stringify(deepLinkData));
 }
 
 // ------------- QUICK LINKS PAGE 3 -------------
@@ -136,8 +155,14 @@ function addDeepviews() {
 };
 
 
+function createLink() {
+	branch.init(key)
+	var retrieveRedirects = localStorage.getItem('redirects');
+	var redirectsJSON = JSON.parse(retrieveRedirects);
 
-
+	var retrieveDeepLinkData = localStorage.getItem('deepLinkData');
+	var deepLinkJSON = JSON.parse(retrieveDeepLinkData);
+}
 
 
 
