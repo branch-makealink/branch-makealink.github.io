@@ -114,6 +114,42 @@ function recordRedirects() {
 	// var redirectsJSON = JSON.parse(retrieveRedirects);
 }
 
+function recordMarketingTitle() {
+  var marketing_title = document.getElementById("$marketing_title").value;
+
+  var mts = [marketing_title]
+  const keys = ["$marketing_title"]
+
+  // map key to URL
+  const mt = Object.create(null); keys.forEach((e, i) => mts[e] = URLs[i]);
+
+  // convert to string for localStorage
+  localStorage.setItem('$marketing_title', JSON.stringify(mt));
+
+  // retrieve as JSON later on
+  // var retrieveRedirects = localStorage.getItem('redirects');
+  // var redirectsJSON = JSON.parse(retrieveRedirects);
+}
+
+function recordUTMs() {
+  var feature = document.getElementById("~feature").value;
+  var channel = document.getElementById("~channel").value;
+  var campaign = document.getElementById("~campaign").value;
+  var tags = document.getElementById("~tags").value;
+  var utms = [feature,channel,campaign,tags]
+  const keys = ["~feature", "~channel", "~campaign", "~tags"]
+
+  // map key to URL
+  const redirects = Object.create(null); keys.forEach((e, i) => redirects[e] = URLs[i]);
+
+  // convert to string for localStorage
+  localStorage.setItem('utms', JSON.stringify(utms));
+
+  // retrieve as JSON later on
+  // var retrieveRedirects = localStorage.getItem('redirects');
+  // var redirectsJSON = JSON.parse(retrieveRedirects);
+}
+
 // ------------- QUICK LINKS PAGE 5 -------------
 // record deepview keys, change button text
 function addDeepviews() {
