@@ -3,7 +3,7 @@ $(document).ready(function(){
 	var selection = document.querySelector('input[name="quicklinkradios"]:checked').value;
 	console.log(selection);	
 	document.getElementsByClassName("key-value-form-container")[0].style.display = 'none';
-}) 
+});
 
 function quickLinkTypeSelection() {
   var selection = document.querySelector('input[name="quicklinkradios"]:checked').value;
