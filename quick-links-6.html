@@ -10,6 +10,7 @@
     <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print">
     <!-- CSS only -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <script src="javascripts/main.js"></script>
     <!--[if lt IE 9]>
     <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
@@ -18,27 +19,35 @@
   <body>
     <header>
       <div class="inner">
-        <a href="index.html"></a><h1>Make-a-Link Wizard</h1>
+        <a href="index.html" style="text-decoration:none"><h1>Make-a-Link Wizard</h1></a>
         <h2>Learn How to Make a Branch Link!</h2>
       </div>
     </header><br><br>
     <div class="border border-dark rounded container">
       <br>
-      <strong>Do you want this link to function as a Branch Link (deep link for experience purposes) without tracking attribution?</strong><br><br>
+      <strong>Do you want this link to function as a Branch link without tracking the user?</strong><br><br>
       <div class="form-check">
-        <input class="form-check-input" type="radio" id="$deeplink_no_attribution" name="quicklinkRadios" value="true" onChange="quickLinkTypeSelection()"checked>
+        <input class="form-check-input" type="radio" name="attribution" value="true" onChange="attribution()" checked>
         <label class="form-check-label">
           Yes
         </label>
         <div class="btn-group">
-          <a href="#" data-toggle="tooltip" data-placement="right" title="I want my link to only be used for user experience,and not for attribution"><small>- what does this mean?</small></a>
+          <a href="#" data-toggle="tooltip" data-placement="right" title="Enabling this means that we won't track any downstream events that happen when a user clicks this link."><small>- what does this mean?</small></a>
         </div>
         <br>
-        <label id="summary">When a Quick Link has either link data or a query param $deeplink_no_attribution=true, clicking the link will still deep link your customer into your app but the install, open, purchase, etc. and all future events will not be attributed to that click and show in your dashboard analytic reports, charts, cohorts and exported data.
+        <label id="summary">When a Quick Link includes this flag (<b>$deeplink_no_attribution=true</b>), clicking the link will still function as a Branch link - deep linking your customer into your app, handling mobile redirects per mobile OS - but no events will be attributed to this link. You will not see any stats or events tied to this link in your dashboard, analytics, exports or anywhere else in Branch.
+          <br><br>
+          This can be useful in certain situations:
+          <br>
+          <ul>
+            <li>When running campaigns, sometimes one might need two links to handle redirects appropriately, but only the first link that gets clicked should be used to attribute downstream events.</li>
+            <li>For some ad partners, this flag is required so that Branch and the ad partner can both attribute events wihout double counting and mistakes in attribution.</li>
+            <li>For edge cases where you don't want to unnecessarily pollute your dashboard/data with unimportant metrics.</li>
+          </ul>
         </label>
-      </div><br>
+      </div>
       <div class="form-check">
-        <input class="form-check-input" type="radio" name="quicklinkRadios" value="No" onChange="quickLinkTypeSelection()">
+        <input class="form-check-input" type="radio" name="attribution" value="false" onChange="attribution()">
         <label class="form-check-label">
           No
         </label>
@@ -46,18 +55,19 @@
           <a href="#" data-toggle="tooltip" data-placement="right" title="I want my link to get attribution for events"><small>- what does this mean?</small></a>
         </div>
         <br>
-        <label id="summary">This link will track resulting actions in the Branch dashboard, make sure you set analytics tags in the next section for reporting purposes.
+        <label id="summary">This link will function as a normal Branch link, tracking resulting actions in the Branch dashboard, such as clicks, opens, installs, etc. Make sure you set analytics tags in the next section for reporting purposes!
+          <br><br>
         </label>
       </div>
       <br>
       <button type="button" class="btn btn-success" onclick="back()">Back</button>
-      <a href="quick-links-7.html"></a><button type="button" id="next" class="btn btn-success" onclick="next(), recordLinkData()">Next</button><br><br>
+      <button type="button" class="btn btn-success next" onclick="next()">Next</button>
+      <br><br>
     </div>
     
     <!-- JS, Popper.js, and jQuery -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
-    <script src="javascripts/main.js"></script>
   </body>
 </html>

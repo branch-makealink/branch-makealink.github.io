@@ -260,7 +260,7 @@ samp {
   font-size: 12px;
  }
 
- #next {
+ .next {
   position: relative;
   right: -960px;
  }

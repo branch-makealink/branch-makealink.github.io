@@ -18,7 +18,7 @@
   <body>
     <header>
       <div class="inner">
-        <a href="index.html"></a><h1>Make-a-Link Wizard</h1>
+        <a href="index.html" style="text-decoration:none"><h1>Make-a-Link Wizard</h1></a>
         <h2>Learn How to Make a Branch Link!</h2>
       </div>
     </header><br><br>
@@ -26,7 +26,7 @@
       <br>
       <strong>Should <u>non-app</u> users be sent to the app or mobile web?</strong><br><br>
       <div class="form-check">
-        <input class="form-check-input" type="radio" name="quicklinkRadios" value="App" onChange="quickLinkTypeSelection()"checked>
+        <input class="form-check-input" type="radio" name="radios" value="App" checked>
         <label class="form-check-label">
           App Store/Play Store
         </label>
@@ -39,7 +39,7 @@
         </label>
       </div><br>
       <div class="form-check">
-        <input class="form-check-input" type="radio" name="quicklinkRadios" value="Mobile Web" onChange="quickLinkTypeSelection()">
+        <input class="form-check-input" type="radio" name="radios" value="Mobile Web">
         <label class="form-check-label">
           Mobile Web
         </label>
@@ -52,7 +52,7 @@
       </div>
       <br>
       <button type="button" class="btn btn-success" onclick="back()">Back</button>
-      <button type="button" class="btn btn-success" id="next" onclick="next()">Next</button><br><br>
+      <button type="button" class="btn btn-success next" onclick="next()">Next</button><br><br>
     </div>
     
     <!-- JS, Popper.js, and jQuery -->

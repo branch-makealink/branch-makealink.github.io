@@ -17,36 +17,34 @@
   <body>
     <header>
       <div class="inner">
-        <a href="index.html"></a><h1>Make-a-Link Wizard</h1>
+        <a href="index.html" style="text-decoration:none"><h1>Make-a-Link Wizard</h1></a>
         <h2>Learn How to Make a Branch Link!</h2>
       </div>
-    </header><br><br>
+    </header>
+    <br><br>
     <div class="border border-dark rounded container">
       <br>
       <strong>What UTM tags do you want to associate with this link?</strong>
       <div class="btn-group">
-          <a href="#" data-toggle="tooltip" data-placement="right" title="These tags will help you filter the performance of these links when they're used, they also align with UTM syntax. Apply the broadest values in ~feature, and then go more granular from ~channel to ~campaign to ~tags. Enforce accurate & consistent spelling of analytics values to keep your analytics dashboards organized & clean. Note: These fields are case-sensitive.
-
-
-
-"><small>- what does this mean?</small></a>
+          <a href="#" data-toggle="tooltip" data-placement="right" title="UTM tags are used for certain ads partners that will help you identify where this link was used. Note: These fields are case-sensitive."><small>- what does this mean?</small></a>
         </div><br>
         <br>
-        <label id="summary">Enter the UTMs that you want to track
+        <label id="summary">Enter the UTMs that you want to track.
 		If you don’t have your UTMs right now, you can click Continue and add later in the dashboard!</label>
-   
-      <form class="key-value-form-container">
+      <form class="form">
         <div class="form-group" id="utmtextfields">
-          <input type="value" class="form-control" id="utm_medium" aria-describedby="utm_medium" placeholder="UTM_Medium (Branch “Feature”)">
-          <input type="value" class="form-control" id="utm_medium" aria-describedby="utm_medium" placeholder="UTM_Source (Branch “Channel”)">
-          <input type="value" class="form-control" id="utm_medium" aria-describedby="utm_medium" placeholder="UTM_Campaign (Branch “Campaign”)">
-          <input type="value" class="form-control" id="utm_medium" aria-describedby="utm_medium" placeholder="UTM_Content (Branch “Tags”)">
-          <br>
-          <label id="summary">Extra fields for additional link data you want to add, like a promo code</label>
+          <b>UTM Medium</b>
+          <input type="value" class="form-control" id="utm_medium" placeholder="Maps to ~feature in Branch"><br>
+          <b>UTM Source</b>
+          <input type="value" class="form-control" id="utm_source" placeholder="Maps to ~channel in Branch"><br>
+          <b>UTM Campaign</b>
+          <input type="value" class="form-control" id="utm_campaign" placeholder="Maps to ~campaign in Branch"><br>
+          <b>UTM Content</b>
+          <input type="value" class="form-control" id="utm_content" placeholder="Maps to ~tags in Branch">
         </div>
       </form><br>
       <button type="button" class="btn btn-success" onclick="back()">Back</button>
-      <button type="button" id="next" id="next" class="btn btn-success" onclick="next()">Next</button><br><br>
+      <button type="button" class="btn btn-success next" onclick="next(), setUTMTags()">Next</button><br><br>
     </div>
     
     <!-- JS, Popper.js, and jQuery -->

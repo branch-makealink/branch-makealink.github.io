@@ -18,30 +18,32 @@
   <body>
     <header>
       <div class="inner">
-        <a href="index.html"></a><h1>Make-a-Link Wizard</h1>
+        <a href="index.html" style="text-decoration:none"><h1>Make-a-Link Wizard</h1></a>
         <h2>Learn How to Make a Branch Link!</h2>
       </div>
-    </header><br><br>
+    </header>
+    <br><br>
     <div class="border border-dark rounded container">
       <br>
-      <strong>What do you want to name this link (Marketing Title)?</strong><br><br>
-      <form class="key-value-form-container">
-        <b class="form-text">Enter a name for your link.
-            </b>
-        <small id="summary">Make sure to name it something you will recognize!</small>
+      <strong>What do you want to name this link (Marketing Title)?</strong>
+      <br><br>
+      <form class="form">
+        <b class="form-text">Enter a name for your link.</b>
+        <small id="summary">Make sure to name it something you will recognize! This is how you'll find links in your dashboard/exports after they're in use.</small>
         <div class="row">
           <div class="col">
             <input type="value" class="form-control" readonly placeholder="$marketing_title">
           </div>=
           <div class="col">
-            <input type="value" class="form-control" id="$marketing_title" placeholder="Enter a name for your link" data-toggle="tooltip" data-placement="top" title="">
+            <input type="value" class="form-control" id="$marketing_title" placeholder="Enter a name for your link" data-toggle="tooltip" data-placement="top">
           </div>
         </div>
         <br>
       </form>
       <br>
       <button type="button" class="btn btn-success" onclick="back()">Back</button>
-      <a href="quick-links-8.html"></a><button type="button" id="next" class="btn btn-success" onclick="next(), recordLinkData() ">Next</button><br><br>
+      <button type="button" class="btn btn-success next" onclick="next(), setTitle()">Next</button>
+      <br><br>
     </div>
     
     <!-- JS, Popper.js, and jQuery -->

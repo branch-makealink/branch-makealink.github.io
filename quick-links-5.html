@@ -18,7 +18,7 @@
   <body>
     <header>
       <div class="inner">
-        <a href="index.html"></a><h1>Make-a-Link Wizard</h1>
+        <a href="index.html" style="text-decoration:none"><h1>Make-a-Link Wizard</h1></a>
         <h2>Learn How to Make a Branch Link!</h2>
       </div>
     </header><br><br>
@@ -29,9 +29,9 @@
       <small id="summary">(i.e. Organic post, Story, Bio, etc.)</small>
       <br><br>
       <div class="form-check">
-        <input class="form-check-input" type="radio" name="deepviewRadios" value="Yes" onChange="addDeepviews()"checked>
+        <input class="form-check-input" type="radio" name="radios" value="Yes" onChange="userSelection(), addDeepviews()">
         <label class="form-check-label">
-          Yes
+          Yes, use <a target="_blank" href="https://help.branch.io/using-branch/docs/deepviews">Deepviews</a>
         </label>
         <div class="btn-group">
           <a href="#" data-toggle="tooltip" data-placement="right" title="I want users to be able to deep link into my app after clicking on a link in Facebook/Twitter etc."><small>- what does this mean?</small></a>
@@ -42,7 +42,7 @@
         When the user redirects through our Deepviews, we can guarantee we're setting a cookie in the in-app webview. This allows Branch to open the app directly from the social feeds on subsequent clicks.
       </div><br>
       <div class="form-check">
-        <input class="form-check-input" type="radio" name="deepviewRadios" value="No" onChange="addDeepviews()">
+        <input class="form-check-input" type="radio" name="radios" value="No" onChange="userSelection(), addDeepviews()">
         <label class="form-check-label">
           Mobile Web
         </label>
@@ -55,7 +55,7 @@
       </div>
       <br>
       <button type="button" class="btn btn-success" onclick="back()">Back</button>
-      <button type="button" id="next" class="btn btn-success" onclick="next()">Next</button><br><br>
+      <button type="button" class="btn btn-success next" onclick="next()">Next</button><br><br>
     </div>
     
     <!-- JS, Popper.js, and jQuery -->

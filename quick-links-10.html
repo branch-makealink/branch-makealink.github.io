@@ -17,7 +17,7 @@
   <body>
     <header>
       <div class="inner">
-        <a href="index.html"></a><h1>Make-a-Link Wizard</h1>
+        <a href="index.html" style="text-decoration:none"><h1>Make-a-Link Wizard</h1></a>
         <h2>Learn How to Make a Branch Link!</h2>
       </div>
     </header><br><br>
@@ -28,13 +28,13 @@
           <a href="#" data-toggle="tooltip" data-placement="right" title="This is required for the Branch backend to associate the new Quick Link to your account. You can find your Branch key in the Dashboard on the Account Settings; Profile page."><small>- what does this mean?</small></a>
         </div><br>
         <br>
-      <form class="key-value-form-container">
+      <form class="form">
         <div class="form-group" id="utmtextfields">
           <input type="value" class="form-control" id="branch_key" aria-describedby="branch_key" placeholder="Enter your Branch Key ex. key_live_gjduekslMKdbEUlDs1chFipbyziQM4mY">
         </div>
       </form><br>
       <button type="button" class="btn btn-success" onclick="back()">Back</button>
-      <a href="quick-links-11.html"></a><button type="button" id="next" class="btn btn-success" onclick="next()">Next</button><br><br>
+      <button type="button" class="btn btn-success next" onclick="next(), createLink()">Next</button><br><br>
     </div>
     
     <!-- JS, Popper.js, and jQuery -->
