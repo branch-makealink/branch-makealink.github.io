@@ -33,18 +33,27 @@
 		If you don’t have your UTMs right now, you can click Continue and add later in the dashboard!</label>
       <form class="form">
         <div class="form-group" id="utmtextfields">
-          <b>UTM Medium</b>
-          <input type="value" class="form-control" id="utm_medium" placeholder="Maps to ~feature in Branch"><br>
-          <b>UTM Source</b>
-          <input type="value" class="form-control" id="utm_source" placeholder="Maps to ~channel in Branch"><br>
-          <b>UTM Campaign</b>
-          <input type="value" class="form-control" id="utm_campaign" placeholder="Maps to ~campaign in Branch"><br>
-          <b>UTM Content</b>
-          <input type="value" class="form-control" id="utm_content" placeholder="Maps to ~tags in Branch">
+          <b>Campaign</b>
+          <input type="value" class="form-control" id="campaign" placeholder="Maps to utm_campaign in Branch"><br>
+          <b>Channel</b>
+          <input type="value" class="form-control" id="channel" placeholder="Maps to utm_source in Branch"><br>
+          <b>Feature</b>
+          <input type="value" class="form-control" id="feature" placeholder="Maps to utm_medium in Branch"><br>
+          <b>Tags</b>
+          <label><small id="summary">These Analytics Tags are used to tag links with identifiable information so you can filter for this link in the dashboard later on. For example, if these links were designed for a specific promo or sale, you could tag these with something like FallPromo or MAR20MensShoes. You can add more tags later on in the dashboard.</small></label>
+          <form id="tagsForm">
+            <input type="value" class="form-control-sm tags" id="tag1" placeholder="">
+            <input type="value" class="form-control-sm tags" id="tag2" placeholder="">
+            <input type="value" class="form-control-sm tags" id="tag3" placeholder="">
+            <input type="value" class="form-control-sm tags" id="tag4" placeholder="">
+            <input type="value" class="form-control-sm tags" id="tag5" placeholder="">
+            <input type="value" class="form-control-sm tags" id="tag6" placeholder="">
+          </form>
         </div>
       </form><br>
       <button type="button" class="btn btn-success" onclick="back()">Back</button>
-      <button type="button" class="btn btn-success next" onclick="next(), setUTMTags()">Next</button><br><br>
+      <button type="button" class="btn btn-success next" onclick=" setUTMTags()">Next</button><br><br>
+      <button type="button" class="btn btn-success" onclick="createLink()">Create Link</button><br><br>
     </div>
     
     <!-- JS, Popper.js, and jQuery -->

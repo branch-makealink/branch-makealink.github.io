@@ -16,11 +16,17 @@ var data = Object.create(null);
 var finalJSON = {
 	// "tags":tags,
 	data : {
-		"$ios_url": localStorage.getItem("$ios_url"),
-		"$android_url": localStorage.getItem("$android_url"),
-		"$desktop_url": localStorage.getItem("$desktop_url")
+		// "$ios_url": localStorage.getItem("$ios_url"),
+		// "$android_url": localStorage.getItem("$android_url"),
+		// "$desktop_url": localStorage.getItem("$desktop_url"),
 	}
 };
+
+function createData() {
+  for (var i = 0; i < localStorage.length; i++) {
+    finalJSON.data[localStorage.key(i)] = localStorage.getItem(localStorage.key(i));
+  }
+}
 
 // Next Page
 function next() {
@@ -37,7 +43,7 @@ function next() {
   window.location = "quick-links-" + page + ".html";
 }
 
-// Next Page
+// Go back
 function back() {
   window.history.back();
 }
@@ -55,15 +61,14 @@ function userSelection() {
   var button = document.querySelector(".next");
 
   if (selection == "App") {
-      button.innerHTML = "Build Deep Link";
+    button.innerHTML = "Build Deep Link";
 	  button.style.right = "-900px";
-	  localStorage.removeItem(data["'web_only'"]);
+	  localStorage.removeItem('webonly');
 
   } else if (selection == "Mobile Web") {
 	  button.innerHTML = "Build Web Only Link";
 	  button.style.right = "-870px";
-	  webonly = {"$web_only":true};
-	  localStorage.data = ('webonly', JSON.stringify(webonly));
+	  localStorage.webonly = true;
 	  
   } else if (selection == "Yes") {
 	  button.innerHTML = "Add Deepviews";
@@ -77,17 +82,24 @@ function userSelection() {
 
 // ------------- QUICK LINKS PAGE 2 -------------
 // Show specific page collapse
-$(document).ready(function(){  
-	document.getElementsByClassName("key-value-form-container")[0].style.display = 'none';
+var formDisplay = document.getElementsByClassName("key-value-form-container")[0];
+
+$(document).ready(function(){ 
+
+  if (formDisplay !== undefined) {
+    formDisplay.style.display = 'none';
+  } else {
+    console.log("Current link data below:")
+  }
 });
 
 function hideForm() {
-  document.getElementsByClassName("key-value-form-container")[0].style.display =
+  formDisplay.style.display =
     "none";
 }
 
 function showForm() {
-  document.getElementsByClassName("key-value-form-container")[0].style.display =
+  formDisplay.style.display =
     "block";
 }
 
@@ -105,25 +117,14 @@ function recordLinkData() {
   // store keys
   for (var i = 0; i < keyLength; i++) {
     var keyInput = keyData[i];
-    if (keyInput.value) {
-      keyArray.push(keyInput.value);
-    }
-  };
- 
-  // store values 
-  for (var i = 0; i < valueLength; i++) {
     var valueInput = valueData[i];
-    if (valueInput.value) {
-      valueArray.push(valueInput.value);
+
+    if (keyInput.value && valueInput.value) {
+      localStorage.setItem(keyInput.value, valueInput.value)
     }
+
+    // maybe better to store into json, then parse and drop brackets to insert into final JSON
   };
-
-  // zip 
-  var data = Object.create(null);
-  keyArray.forEach((e, i) => (data[e] = valueArray[i]));
-
-  // convert to string for localStorage
-  localStorage.setItem("data", JSON.stringify(data));
 };
 
 // ------------- QUICK LINKS PAGE 3 -------------
@@ -143,10 +144,23 @@ function recordRedirects() {
 
 	for (var i = 0; i < redirects.length; i++) {
 		if (redirects[i].value !== undefined || redirects[i].value !== "") {
-			localStorage.setItem(redirects[i].id, redirects[i].value)
+      if ((redirects[i].value.includes(".com")) || 
+        (redirects[i].value.includes(".net")) || 
+        (redirects[i].value.includes(".io"))) {
+
+        localStorage.setItem([redirects[i].id], redirects[i].value)
+
+      }
 		}
 	}
+  console.log(localStorage);
 };
+
+// store link data in data json
+// store rest as strings
+// concat strings with parsed data json 
+// store all into JSON
+// extract from localStorage and use as deeplinkData
 
 // ------------- QUICK LINKS PAGE 5 -------------
 // record deepview keys, change button text
@@ -154,29 +168,31 @@ function addDeepviews() {
   var selection = document.querySelector('input[name="radios"]:checked').value;
 
   if (selection == "Yes") {
-
-    const passiveDeepviews = {
-      $ios_deepview: "branch_default",
-      $android_deepview: "branch_default",
-      $desktop_deepview: "branch_default",
-    }
-
-	localStorage.setItem("passiveDeepviews", JSON.stringify(passiveDeepviews));
-    // retrieve as JSON later on
-    // var retrieveDeepviews = localStorage.getItem('passiveDeepviews');
-    // var deepviewJSON = JSON.parse(retrieveDeepviews);
+    localStorage.setItem('ios_dv', "branch_default");
+    localStorage.setItem('android_dv', "branch_default");
+    localStorage.setItem('desktop_dv', "branch_default");
   } else {
-	  localStorage.removeItem("passiveDeepviews");
-  }
+     localStorage.removeItem("ios_dv");
+     localStorage.removeItem("android_dv");
+     localStorage.removeItem("desktop_dv");
+  } 
 };
+
+// ------------- QUICK LINKS PAGE 6 -------------
+function attribute() {
+  var check = document.querySelector('input[name="attribution"]:checked').value;
+  
+  localStorage.setItem("no_attribution", check)
+  console.log("no attribution: " + check)
+}
 
 // ------------- QUICK LINKS PAGE 7 -------------
 function setTitle() {
 	if (document.location.href.includes("7")) {
 		var linkTitle = document.getElementById("$marketing_title").value;
-		if (linkTitle !== "") {
-			localStorage.setItem("title", linkTitle)
-		}
+  		if (linkTitle !== "") {
+  			localStorage.setItem("title", linkTitle)
+  		}
 	 }
 };
 
@@ -192,20 +208,31 @@ function setAlias() {
 
 // ------------- QUICK LINKS PAGE 9 -------------
 function setUTMTags() {
-	if (document.location.href.includes("9")) {
-		var utm_medium = document.getElementById("utm_medium");
-		var utm_source = document.getElementById("utm_source");
-		var utm_campaign = document.getElementById("utm_campaign");
-		var utm_content = document.getElementById("utm_content");
+  var campaign = document.getElementById("campaign");
+	var channel = document.getElementById("channel");
+	var feature = document.getElementById("feature");
 
-		var utmTags = new Array(utm_campaign, utm_content, utm_medium, utm_source);
+	var utmTags = new Array(campaign, channel, feature);
 
-		for (var i = 0; i < utmTags.length; i++) {
-			if (utmTags[i].value !== "") {
-				localStorage.setItem(utmTags[i].id, utmTags[i].value)
-			}
+	for (var i = 0; i < utmTags.length; i++) {
+		if (utmTags[i].value !== "") {
+			localStorage.setItem(utmTags[i].id, utmTags[i].value)
 		}
-	 }
+	}
+
+  var analyticsTags = new Array;
+  var tags = document.getElementsByClassName("tags")
+
+  for (var t = 0; t < 6; t++) {
+    if (tags[t].value !== "" || tags[t].value !== undefined) {
+      analyticsTags[t] = tags[t].value;
+    }
+  }
+
+  // remove empty tags
+  analyticsTags = analyticsTags.filter(entry => entry.trim() != '');
+
+  localStorage.setItem("tags", JSON.stringify(analyticsTags));
 };
 
 // ------------- QUICK LINKS PAGE 10 -------------
@@ -218,28 +245,27 @@ function createLink() {
   // var key = document.querySelector("#branch_key");
   // branch.init(key);
 
-  var retrieveMetadata = localStorage.getItem("data");
-  var metadataJSON = JSON.parse(retrieveMetadata);
+  // pull tags
+  var tagsArray = JSON.parse(localStorage.getItem("tags"));
+  finalJSON.tags = tagsArray;
 
-  var retrieveRedirects = localStorage.getItem("redirects");
-  var res = retrieveRedirects.slice(1,-1)
+  // pull UTM tags
+  if (localStorage.getItem('campaign') !== undefined) { finalJSON.campaign = localStorage.getItem('campaign')}
+  if (localStorage.getItem('channel') !== undefined) { finalJSON.channel = localStorage.getItem('channel')}
+  if (localStorage.getItem('feature') !== undefined) { finalJSON.feature = localStorage.getItem('feature')}
 
-  var retrieveDeepviews = localStorage.getItem('passiveDeepviews');
-  var deepviewJSON = JSON.parse(retrieveDeepviews);
+  // Nested data object
+  // add redirects
+  if (localStorage.getItem('ios') !== undefined) { finalJSON["$ios_url"] = localStorage.getItem('ios')}
+  if (localStorage.getItem('android') !== undefined) { finalJSON["$android_url"] = localStorage.getItem('android')}
+  if (localStorage.getItem('desktop') !== undefined) { finalJSON["$desktop_url"] = localStorage.getItem('desktop')}
 
-  console.log(metadataJSON)
-  console.log(redirectsJSON)
-  console.log(deepviewJSON)
+  // add deepviews
+  if (localStorage.getItem('ios_dv') !== undefined) { finalJSON["$ios_deepview"] = localStorage.getItem('ios_dv')}
+  if (localStorage.getItem('android_dv') !== undefined) { finalJSON["$android_deepview"] = localStorage.getItem('android_dv')}
+  if (localStorage.getItem('desktop_dv') !== undefined) { finalJSON["$desktop_deepview"] = localStorage.getItem('desktop_dv')}
 
-  // final JSON is empty - will contain data obj, but should store everything else as JSON
-  $.extend(finalJSON, metadataJSON, res, deepviewJSON);
-
-  console.log("Link data: " + finalJSON)
+  console.log(localStorage)
+  console.log(finalJSON)
 };
 
-// ------------- QUICK LINKS PAGE 6 -------------
-function attribute() {
-	var check = document.querySelector('input[name="attribution"]:checked').value;
-	
-	console.log("no attribution: " + check)
-}

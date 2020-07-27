@@ -34,20 +34,20 @@
           Yes, use <a target="_blank" href="https://help.branch.io/using-branch/docs/deepviews">Deepviews</a>
         </label>
         <div class="btn-group">
-          <a href="#" data-toggle="tooltip" data-placement="right" title="I want users to be able to deep link into my app after clicking on a link in Facebook/Twitter etc."><small>- what does this mean?</small></a>
+          <a href="#" data-toggle="tooltip" data-placement="right" title="I want to show users a customizable page before deep linking them into my app."><small>- what does this mean?</small></a>
         </div>
         <br>
-        <label id="summary">Social media platforms like Facebook, Twitter open in-app web browsers when users click on content. In order to deep link users out of those platforms, you'll want the mobile redirects to be set to <a href="https://blog.branch.io/branch-deepviews-the-missing-link-in-app-discovery/"> Deepviews (a Branch landing page)</a>.
+        <label id="summary">Social media platforms like Facebook, Twitter open in-app web browsers when users click on content. In order to deep link users out of those platforms, you'll want the mobile redirects to be set to <a href="https://blog.branch.io/branch-deepviews-the-missing-link-in-app-discovery/"> Deepviews (a Branch landing page)</a>. Deepviews are customizable and can show a product page in detail before deep linking a user into the app. You can customize and select which Deepviews you want to use in Configuration. 
         <br><br>
         When the user redirects through our Deepviews, we can guarantee we're setting a cookie in the in-app webview. This allows Branch to open the app directly from the social feeds on subsequent clicks.
       </div><br>
       <div class="form-check">
         <input class="form-check-input" type="radio" name="radios" value="No" onChange="userSelection(), addDeepviews()">
         <label class="form-check-label">
-          Mobile Web
+          No, don't use Deepviews
         </label>
         <div class="btn-group">
-          <a href="#" data-toggle="tooltip" data-placement="right" title="If they don't have the app, I want to send them to the mobile page instead."><small>- what does this mean?</small></a>
+          <a href="#" data-toggle="tooltip" data-placement="right" title="I want users to deep link straight into my app, and if that's not possible, I want users to see the .com page in the app that they're in."><small>- what does this mean?</small></a>
         </div>
         <br>
         <label id="summary">Sometimes you won’t want to interrupt the user’s flow by sending them to the App Store/Play Store. Instead you can let them continue to mobile web, with the Branch Web SDK, we’ll track resulting actions on your website as well!
