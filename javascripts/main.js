@@ -44,6 +44,10 @@ function next() {
   }
   page += 1;
 
+  if (window.location.href.includes("index")) {
+    localStorage.clear()
+  }
+
   window.location = "quick-links-" + page + ".html";
 }
 
@@ -264,6 +268,7 @@ function holdBranchKey() {
   }
 }
 
+// ------------- QUICK LINKS PAGE 11 -------------
 // call Branch
 function createLink() {
   var branchKey = localStorage.getItem("branchkey");
@@ -272,16 +277,15 @@ function createLink() {
   branch.link(rewrite, function(err, link) {
     if (err == null) {
       document.getElementById("branchLink").value = link;
-      console.log(link)
+      
+      var viewLinkData = document.getElementById('viewLinkData');
+      viewLinkData.href = link + "?debug=1";
+      console.log(viewLinkData.href)
     } else {
       console.log(err, link)
       document.getElementById("branchLink").value = err;
     }
   })
-
-  var viewLinkData = document.getElementById('viewLinkData');
-  viewLinkData.href = document.getElementById("branchLink").value + "?debug=1";
-  console.log(viewLinkData.href)
 
   localStorage.clear();
 };
