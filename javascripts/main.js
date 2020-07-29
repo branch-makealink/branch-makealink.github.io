@@ -44,10 +44,6 @@ function next() {
   }
   page += 1;
 
-  if (window.location.href.includes("index")) {
-    localStorage.clear()
-  }
-
   window.location = "quick-links-" + page + ".html";
 }
 
