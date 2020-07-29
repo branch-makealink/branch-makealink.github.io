@@ -119,8 +119,8 @@ function recordLinkData() {
     var valueInput = document.querySelectorAll('input[name="value"]')[i].value;
 
     if (keyInput !== "" && valueInput !== "") {
-      finalJSON.data[keyInput] = valueInput;
-      storeLinkData(finalJSON)
+      rewrite.data[keyInput] = valueInput;
+      storeLinkData(rewrite)
     }
   }
 };
