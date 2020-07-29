@@ -67,9 +67,12 @@ function userSelection() {
   if (selection == "App") {
     button.innerHTML = "Build Deep Link";
 	  button.style.right = "-900px";
+
     var rewrite = JSON.parse(localStorage.getItem("final"))
-    delete rewrite.data['$web_only']
-    storeLinkData(rewrite);
+    if (rewrite.data['$web_only'] !== null) {
+      delete rewrite.data['$web_only']
+      storeLinkData(rewrite);
+    }
 
   } else if (selection == "Mobile Web") {
 	  button.innerHTML = "Build Web Only Link";
