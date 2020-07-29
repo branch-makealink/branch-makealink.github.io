@@ -25,27 +25,27 @@
       <br>
       <strong>Will your link be visible or hidden (behind an element such as an imagem, button or hyperlink text)?</strong><br><br>
       <div class="form-check">
-        <input class="form-check-input" type="radio" name="radios" value="Hidden" onclick="hideForm();"checked>
         <label class="form-check-label">
-          Hidden
+          <input class="form-check-input radio" type="radio" name="radios" value="Hidden" onclick="hideForm();">
+          This link will be hidden from the user
         </label>
         <div class="btn-group">
           <a href="#" data-toggle="tooltip" data-placement="right" title="Branch links by default will assign a random string of characters to your link."><small>- what does this mean?</small></a>
         </div>
         <br>
-        <label id="summary">If the link will not be seen, we will generate a random string to append </label>
+        <label id="summary">If the link will not be seen, we will generate a random string.</label>
       </div><br>
       <div class="form-check">
-        <input class="form-check-input" type="radio" name="radios" value="Visible" onclick="showForm();">
         <label class="form-check-label">
-          Visible
+          <input class="form-check-input radio" type="radio" name="radios" value="Visible" onclick="showForm();">
+          This link will be visible to the user
         </label>
         <div class="btn-group">
           <a href="#" data-toggle="tooltip" data-placement="right" title="You can change your link alias to a vanity URL to reduce character counts or provide context about the link."><small>- what does this mean?</small></a>
         </div>
         <br>
-        <label id="summary">Enter the vanity alias that you want at the end of your link
-            An alias can’t be changed after link is built and two links cannot have the same alias.
+        <label id="summary">Enter the vanity alias that you want at the end of your link.
+            <b>Note: An alias can’t be changed after the link is built and aliases cannot be reused. You will see Error 429 if an alias was attempted to be reused.</b>
         </label>
       </div>
       <form class="key-value-form-container">

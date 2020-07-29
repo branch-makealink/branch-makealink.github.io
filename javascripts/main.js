@@ -67,12 +67,15 @@ function userSelection() {
   if (selection == "App") {
     button.innerHTML = "Build Deep Link";
 	  button.style.right = "-900px";
-	  localStorage.removeItem('webonly');
+    var rewrite = JSON.parse(localStorage.getItem("final"))
+    delete rewrite.data['$web_only']
+    storeLinkData(rewrite);
 
   } else if (selection == "Mobile Web") {
 	  button.innerHTML = "Build Web Only Link";
 	  button.style.right = "-870px";
-	  localStorage.webonly = true;
+	  finalJSON.data["$web_only"] = true;
+    storeLinkData(finalJSON);
 	  
   } else if (selection == "Yes") {
 	  button.innerHTML = "Add Deepviews";
@@ -92,9 +95,7 @@ $(document).ready(function(){
 
   if (formDisplay !== undefined) {
     formDisplay.style.display = 'none';
-  } else {
-    console.log("Current link data below:")
-  }
+  } 
 });
 
 function hideForm() {
@@ -129,6 +130,20 @@ var rewrite = JSON.parse(localStorage.getItem("final"))
 $(function() {
 	console.log(localStorage);
 });
+
+function skip() {
+  var noRedirects = document.querySelector('input[name="radios"]:checked');
+
+  if (noRedirects == null) {
+    alert("Please select an option - this determines where a user will go if they don't have the app installed.")
+    location.reload();
+
+  } else if (noRedirects.value == 'Mobile Web') {
+    next();
+
+  } else {
+    window.location.href = "https://branch-makealink.github.io/quick-links-5.html"
+}};
 
 // ------------- QUICK LINKS PAGE 4 -------------
 // Record redirects
@@ -200,7 +215,7 @@ function setAlias() {
 	if (document.location.href.includes("8")) {
 		var alias = document.getElementById("$alias").value;
 		if (alias !== "") {
-      rewrite.data["$alias"] = alias;
+      rewrite["alias"] = alias;
       storeLinkData(rewrite);
 		}
   }
@@ -263,5 +278,11 @@ function createLink() {
       document.getElementById("branchLink").value = err;
     }
   })
+
+  var viewLinkData = document.getElementById('viewLinkData');
+  viewLinkData.href = document.getElementById("branchLink").value + "?debug=1";
+  console.log(viewLinkData.href)
+
+  localStorage.clear();
 };
 

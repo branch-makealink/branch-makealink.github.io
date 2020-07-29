@@ -24,10 +24,10 @@
     <div class="border border-dark rounded container">
       <br>
       <strong>Do you want the app to open to the homepage or to a specific page?</strong><br><br>
-      <div class="form-check">
-        <input class="form-check-input" type="radio" name="radios" value="Homepage" onclick="hideForm();" checked>
+      <div class="form-check cntr">
         <label class="form-check-label">
-          Homepage
+          <input class="form-check-input radio" type="radio" name="radios" value="Homepage" onclick="hideForm();">
+          <span>Homepage</span>
         </label>
         <div class="btn-group">
           <a href="#" data-toggle="tooltip" data-placement="right" title="I only want users to land on the homepage of my app."><small>- what does this mean?</small></a>
@@ -36,9 +36,9 @@
         <label id="summary">If no deep linking is desired, you do not need to add any parameters and can leave the link data blank.</label>
       </div><br>
       <div class="form-check">
-        <input class="form-check-input" type="radio" name="radios" value="Specific Page" onclick="showForm();">
         <label class="form-check-label">
-          Specific Page
+          <input class="form-check-input" type="radio" name="radios" value="Specific Page" onclick="showForm();">
+          <span>Specific Page</span>
         </label>
         <div class="btn-group">
           <a href="#" data-toggle="tooltip" data-placement="right" title="I want to send users to a specific page, and I can do that by adding link data to the link."><small>- what does this mean?</small></a>
