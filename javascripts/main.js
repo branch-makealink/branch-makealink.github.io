@@ -14,18 +14,22 @@ var data = Object.create(null);
 
 // final metadata 
 var finalJSON = {
-	// "tags":tags,
+  // "tags": [tags],
+  // campaign: campaign,
+  // channel: channel,
+  // feature: feature
 	data : {
 		// "$ios_url": localStorage.getItem("$ios_url"),
 		// "$android_url": localStorage.getItem("$android_url"),
-		// "$desktop_url": localStorage.getItem("$desktop_url"),
+    // "$desktop_url": localStorage.getItem("$desktop_url"),
+    // $web_only: true,
+    // $alias: alias,
+    // $marketing_title: linkTitle,
 	}
 };
 
-function createData() {
-  for (var i = 0; i < localStorage.length; i++) {
-    finalJSON.data[localStorage.key(i)] = localStorage.getItem(localStorage.key(i));
-  }
+function storeLinkData(json) {
+  return localStorage.setItem("final", JSON.stringify(json));
 }
 
 // Next Page
@@ -105,27 +109,20 @@ function showForm() {
 
 // record user's link data
 function recordLinkData() {
-  var keyData = document.querySelectorAll('input[name="key"]');
-  var keyLength = keyData.length;
-
-  var valueData = document.querySelectorAll('input[name="value"]');
-  var valueLength = valueData.length;
-
-  var keyArray = new Array;
-  var valueArray = new Array;
-  
   // store keys
-  for (var i = 0; i < keyLength; i++) {
-    var keyInput = keyData[i];
-    var valueInput = valueData[i];
+  for (var i = 0; i < 3; i++) {
+    var keyInput = document.querySelectorAll('input[name="key"]')[i].value;
+    var valueInput = document.querySelectorAll('input[name="value"]')[i].value;
 
-    if (keyInput.value && valueInput.value) {
-      localStorage.setItem(keyInput.value, valueInput.value)
+    if (keyInput !== "" && valueInput !== "") {
+      finalJSON.data[keyInput] = valueInput;
+      storeLinkData(finalJSON)
     }
-
-    // maybe better to store into json, then parse and drop brackets to insert into final JSON
-  };
+  }
 };
+
+// make finalJSON writable
+var rewrite = JSON.parse(localStorage.getItem("final"))
 
 // ------------- QUICK LINKS PAGE 3 -------------
 // Either option leads to next page
@@ -140,27 +137,20 @@ function recordRedirects() {
   var android = document.getElementById("$android_url");
 	var desktop = document.getElementById("$desktop_url");
 	
-	var redirects = [ios, android, desktop]
+  var redirects = [ios, android, desktop]
 
 	for (var i = 0; i < redirects.length; i++) {
 		if (redirects[i].value !== undefined || redirects[i].value !== "") {
       if ((redirects[i].value.includes(".com")) || 
         (redirects[i].value.includes(".net")) || 
         (redirects[i].value.includes(".io"))) {
-
-        localStorage.setItem([redirects[i].id], redirects[i].value)
-
+        
+        rewrite.data[redirects[i].id] = redirects[i].value;
+        storeLinkData(rewrite);       
       }
 		}
 	}
-  console.log(localStorage);
 };
-
-// store link data in data json
-// store rest as strings
-// concat strings with parsed data json 
-// store all into JSON
-// extract from localStorage and use as deeplinkData
 
 // ------------- QUICK LINKS PAGE 5 -------------
 // record deepview keys, change button text
@@ -168,30 +158,39 @@ function addDeepviews() {
   var selection = document.querySelector('input[name="radios"]:checked').value;
 
   if (selection == "Yes") {
-    localStorage.setItem('ios_dv', "branch_default");
-    localStorage.setItem('android_dv', "branch_default");
-    localStorage.setItem('desktop_dv', "branch_default");
+
+    rewrite.data["$ios_deepview"] = "branch_default";
+    rewrite.data["$android_deepview"] = "branch_default";
+    rewrite.data["$desktop_deepview"] = "branch_default";
+    storeLinkData(rewrite);
   } else {
-     localStorage.removeItem("ios_dv");
-     localStorage.removeItem("android_dv");
-     localStorage.removeItem("desktop_dv");
+    delete rewrite.data["$ios_deepview"]
+    delete rewrite.data["$android_deepview"]
+    delete rewrite.data["$desktop_deepview"]
+    storeLinkData(rewrite);
   } 
 };
 
 // ------------- QUICK LINKS PAGE 6 -------------
 function attribute() {
   var check = document.querySelector('input[name="attribution"]:checked').value;
-  
-  localStorage.setItem("no_attribution", check)
-  console.log("no attribution: " + check)
-}
 
-// ------------- QUICK LINKS PAGE 7 -------------
+  if (check == "true") {
+    rewrite.data["$deeplink_no_attribution"] = true;
+    storeLinkData(rewrite);
+  } else {
+    delete rewrite.data["$deeplink_no_attribution"];
+    storeLinkData(rewrite);
+  }
+};
+
+// ------------- QUICK LINKS PAGE 7 ------------- 
 function setTitle() {
 	if (document.location.href.includes("7")) {
 		var linkTitle = document.getElementById("$marketing_title").value;
   		if (linkTitle !== "") {
-  			localStorage.setItem("title", linkTitle)
+        rewrite.data["$marketing_title"] = linkTitle;
+        storeLinkData(rewrite);
   		}
 	 }
 };
@@ -201,9 +200,10 @@ function setAlias() {
 	if (document.location.href.includes("8")) {
 		var alias = document.getElementById("$alias").value;
 		if (alias !== "") {
-			localStorage.setItem("alias", alias)
+      rewrite.data["$alias"] = alias;
+      storeLinkData(rewrite);
 		}
-	 }
+  }
 };
 
 // ------------- QUICK LINKS PAGE 9 -------------
@@ -216,7 +216,8 @@ function setUTMTags() {
 
 	for (var i = 0; i < utmTags.length; i++) {
 		if (utmTags[i].value !== "") {
-			localStorage.setItem(utmTags[i].id, utmTags[i].value)
+      rewrite[utmTags[i].id] = utmTags[i].value;
+			storeLinkData(rewrite);
 		}
 	}
 
@@ -232,40 +233,35 @@ function setUTMTags() {
   // remove empty tags
   analyticsTags = analyticsTags.filter(entry => entry.trim() != '');
 
-  localStorage.setItem("tags", JSON.stringify(analyticsTags));
+  rewrite["tags"] = analyticsTags;
+  storeLinkData(rewrite);
 };
 
 // ------------- QUICK LINKS PAGE 10 -------------
+// store key
+function holdBranchKey() {
+  if (document.getElementById("branch_key").value && document.getElementById("branch_key").value.includes("key_")) { 
+    localStorage.setItem("branchkey", document.getElementById("branch_key").value)
+
+  } else {
+    alert("Please enter your Branch key to make the link!")
+    location.reload();
+  }
+}
+
 // call Branch
 function createLink() {
-  // for testing only - replace with user input key
-//   var testKey = "key_live_omPdKap615NW52zlTUvXEklayEiTWfyW";
-//   branch.init(testKey);
+  var branchKey = localStorage.getItem("branchkey");
+  branch.init(branchKey);
 
-  // var key = document.querySelector("#branch_key");
-  // branch.init(key);
-
-  // pull tags
-  var tagsArray = JSON.parse(localStorage.getItem("tags"));
-  finalJSON.tags = tagsArray;
-
-  // pull UTM tags
-  if (localStorage.getItem('campaign') !== undefined) { finalJSON.campaign = localStorage.getItem('campaign')}
-  if (localStorage.getItem('channel') !== undefined) { finalJSON.channel = localStorage.getItem('channel')}
-  if (localStorage.getItem('feature') !== undefined) { finalJSON.feature = localStorage.getItem('feature')}
-
-  // Nested data object
-  // add redirects
-  if (localStorage.getItem('ios') !== undefined) { finalJSON["$ios_url"] = localStorage.getItem('ios')}
-  if (localStorage.getItem('android') !== undefined) { finalJSON["$android_url"] = localStorage.getItem('android')}
-  if (localStorage.getItem('desktop') !== undefined) { finalJSON["$desktop_url"] = localStorage.getItem('desktop')}
-
-  // add deepviews
-  if (localStorage.getItem('ios_dv') !== undefined) { finalJSON["$ios_deepview"] = localStorage.getItem('ios_dv')}
-  if (localStorage.getItem('android_dv') !== undefined) { finalJSON["$android_deepview"] = localStorage.getItem('android_dv')}
-  if (localStorage.getItem('desktop_dv') !== undefined) { finalJSON["$desktop_deepview"] = localStorage.getItem('desktop_dv')}
-
-  console.log(localStorage)
-  console.log(finalJSON)
+  branch.link(rewrite, function(err, link) {
+    if (err == null) {
+      document.getElementById("branchLink").value = link;
+      console.log(link)
+    } else {
+      console.log(err, link)
+      document.getElementById("branchLink").value = err;
+    }
+  })
 };
 

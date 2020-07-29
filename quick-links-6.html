@@ -10,7 +10,6 @@
     <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print">
     <!-- CSS only -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
-    <script src="javascripts/main.js"></script>
     <!--[if lt IE 9]>
     <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
@@ -27,12 +26,12 @@
       <br>
       <strong>Do you want this link to function as a Branch link without tracking the user?</strong><br><br>
       <div class="form-check">
-        <input class="form-check-input" type="radio" name="attribution" value="true" onChange="attribute()" checked>
+        <input class="form-check-input" type="radio" name="attribution" value="true" onchange="attribute()" checked>
         <label class="form-check-label">
           Yes
         </label>
         <div class="btn-group">
-          <a href="#" data-toggle="tooltip" data-placement="right" title="Enabling this means that we won't track any downstream events that happen when a user clicks this link."><small>- what does this mean?</small></a>
+          <a href="#" data-toggle="tooltip" data-placement="right" title="Enabling this means that we won't track any downstream events that happen after a user clicks this link."><small>- what does this mean?</small></a>
         </div>
         <br>
         <label id="summary">When a Quick Link includes this flag (<b>$deeplink_no_attribution=true</b>), clicking the link will still function as a Branch link - deep linking your customer into your app, handling mobile redirects per mobile OS - but no events will be attributed to this link. You will not see any stats or events tied to this link in your dashboard, analytics, exports or anywhere else in Branch.
@@ -47,7 +46,7 @@
         </label>
       </div>
       <div class="form-check">
-        <input class="form-check-input" type="radio" name="attribution" value="false" onChange="attribute()">
+        <input class="form-check-input" type="radio" name="attribution" value="false" onchange="attribute()">
         <label class="form-check-label">
           No
         </label>
@@ -69,5 +68,6 @@
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+    <script src="javascripts/main.js"></script>
   </body>
 </html>
