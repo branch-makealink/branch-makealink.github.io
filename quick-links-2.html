@@ -26,18 +26,28 @@
       <strong>Do you want the app to open to the homepage or to a specific page?</strong><br><br>
       <div class="form-check cntr">
         <label class="form-check-label">
-          <input class="form-check-input radio" type="radio" name="radios" value="Homepage" onclick="hideForm();">
+          <input class="form-check-input radio" type="radio" name="radios" value="Homepage" onchange="showForm();">
           <span>Homepage</span>
         </label>
         <div class="btn-group">
           <a href="#" data-toggle="tooltip" data-placement="right" title="I only want users to land on the homepage of my app."><small>- what does this mean?</small></a>
         </div>
         <br>
-        <label id="summary">If no deep linking is desired, you do not need to add any parameters and can leave the link data blank.</label>
+        <label id="summary">If you want users to land on the homepage in your app, you don't need to set any link data. However, setting a $canonical_url allows Branch to scrape that page for its meta tags - so that when you share a Branch link, the receiving party will see a preview of the web page.<br><br>
+        The $canonical_url is Branch's recommended method of deep linking, meaning the SDK can read the $canonical_url when the link is clicked to send the user to the right place in the app. 
+        </label>
+        <br>
+        <form class="key-value-form-container">
+          <div class="form-group">
+            <small class="form-text" required>For now, don't worry if your app isn't set up to handle $canonical_url. If you're unsure what to enter here, use your website's homepage.<br><br><b>$canonical_url</b></small>
+            <input type="value" class="form-control" id="homepage_canonical" placeholder="https://branch.io">
+            <span><small id="canonical_warning"></small></span>
+          </div>
+        </form>
       </div><br>
       <div class="form-check">
         <label class="form-check-label">
-          <input class="form-check-input" type="radio" name="radios" value="Specific Page" onclick="showForm();">
+          <input class="form-check-input" type="radio" name="radios" value="Specific Page" onclick="showForm()">
           <span>Specific Page</span>
         </label>
         <div class="btn-group">
@@ -47,8 +57,8 @@
         <label id="summary">To open a specific page of your app, you'll need to have a deep link routing structure in place and add those parameters to your link. Apps use Key and Value pairs to tell the app what to do when opened.
         Common routing structures include canonical_url, deeplink_path, or simple keys such as page=account_summary.</label>
       </div>
-      <form class="key-value-form-container">
-        <div class="form-group" id="keyvaluepairtextfields">
+      <form id="inAppRoutes">
+        <div class="form-group">
           <small class="form-text text-muted">Enter your Key and Value pairs that correspond to the page you want to open in the app.
           If you don’t know your routing structure right now, you can click Continue and add later in the dashboard!</small><br>
           <input type="value" class="form-control" name="key" placeholder="Deep Link Route - $canonical_url, $deeplink_path">
@@ -62,7 +72,7 @@
         </div>
       </form><br>
       <button type="button" class="btn btn-success" onclick="back()">Back</button>
-      <button type="button" class="btn btn-success next" onclick="next(), recordLinkData()">Next</button>
+      <button type="button" class="btn btn-success next" onclick="recordLinkData()">Next</button>
       <br><br>
     </div>
     

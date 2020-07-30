@@ -68,6 +68,8 @@ function userSelection() {
     button.innerHTML = "Build Deep Link";
 	  button.style.right = "-900px";
 
+    localStorage.setItem("final", JSON.stringify(finalJSON));
+
     var rewrite = JSON.parse(localStorage.getItem("final"))
     if (rewrite.data['$web_only'] !== null) {
       delete rewrite.data['$web_only']
@@ -93,40 +95,69 @@ function userSelection() {
 // ------------- QUICK LINKS PAGE 2 -------------
 // Show specific page collapse
 var formDisplay = document.getElementsByClassName("key-value-form-container")[0];
+var inAppRoutes = document.getElementById("inAppRoutes")
 
 $(document).ready(function(){ 
-
-  if (formDisplay !== undefined) {
+  if (formDisplay !== undefined || inAppRoutes !== undefined) {
     formDisplay.style.display = 'none';
+    inAppRoutes.style.display = 'none'
   } 
 });
 
-function hideForm() {
-  formDisplay.style.display =
-    "none";
-}
+var radioButtons = document.querySelectorAll('input[name="radios"]');
 
 function showForm() {
-  formDisplay.style.display =
-    "block";
-}
+  if (radioButtons[0].checked) {
+    formDisplay.style.display = 'block';
+    inAppRoutes.style.display = 'none';  
 
-// record user's link data
-function recordLinkData() {
-  // store keys
-  for (var i = 0; i < 3; i++) {
-    var keyInput = document.querySelectorAll('input[name="key"]')[i].value;
-    var valueInput = document.querySelectorAll('input[name="value"]')[i].value;
-
-    if (keyInput !== "" && valueInput !== "") {
-      rewrite.data[keyInput] = valueInput;
-      storeLinkData(rewrite)
-    }
+  } else if (radioButtons[1].checked) {
+    formDisplay.style.display = 'none';
+    inAppRoutes.style.display = 'block';    
   }
-};
+}
 
 // make finalJSON writable
 var rewrite = JSON.parse(localStorage.getItem("final"))
+
+// record user's link data
+function recordLinkData() {
+  var homepage = document.getElementById('homepage_canonical').value;
+
+  if (radioButtons[0].checked == null && radioButtons[1].checked == null) {
+      alert("Please enter in a routing mechanism. If you're unsure what to enter, enter the homepage of your  website, or the link to your app listing if you don't have a website.")
+      window.location.reload();
+
+  } else if (radioButtons[0].checked) {
+    if (homepage == "") {
+      alert("Please enter a valid URL.")  
+
+    } else if (homepage !== null || homepage !== undefined) {
+        if ((homepage.includes(".com")) || 
+            (homepage.includes(".net")) || 
+            (homepage.includes(".io")) ||
+            (homepage.includes(".co"))) {
+            rewrite.data["$canonical_url"] = homepage;
+            storeLinkData(rewrite);
+
+          } else {
+            alert("Please enter a valid $canonical_url.")
+          }
+        }
+
+  } else if (radioButtons[1].checked) {
+      // store keys
+      for (var i = 0; i < 3; i++) {
+      var keyInput = document.querySelectorAll('input[name="key"]')[i].value;
+      var valueInput = document.querySelectorAll('input[name="value"]')[i].value;
+
+      if (keyInput !== "" && valueInput !== "") {
+        rewrite.data[keyInput] = valueInput;
+        storeLinkData(rewrite)
+      }
+    }
+  }
+};
 
 // ------------- QUICK LINKS PAGE 3 -------------
 // Either option leads to next page
@@ -270,8 +301,16 @@ function holdBranchKey() {
 // ------------- QUICK LINKS PAGE 11 -------------
 // call Branch
 function createLink() {
+  // live key
+  // key_live_boOy006UfmG8sSdAqwNcYmmftyeYrJpc
+
   var branchKey = localStorage.getItem("branchkey");
   branch.init(branchKey);
+
+  if (!rewrite.hasOwnProperty('$canonical_url')) {
+    rewrite.data["$canonical_url"] = " "
+  }
+  console.log(rewrite)
 
   branch.link(rewrite, function(err, link) {
     if (err == null) {
@@ -286,6 +325,5 @@ function createLink() {
     }
   })
 
-  localStorage.clear();
 };
 
