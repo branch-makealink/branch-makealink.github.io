@@ -40,7 +40,7 @@
         <form class="key-value-form-container">
           <div class="form-group">
             <small class="form-text" required>For now, don't worry if your app isn't set up to handle $canonical_url. If you're unsure what to enter here, use your website's homepage.<br><br><b>$canonical_url</b></small>
-            <input type="value" class="form-control" id="homepage_canonical" placeholder="https://branch.io">
+            <input type="value" class="form-control" id="homepage_canonical" placeholder="https://branch.io" onchange=>
             <span><small id="canonical_warning"></small></span>
           </div>
         </form>
@@ -72,7 +72,7 @@
         </div>
       </form><br>
       <button type="button" class="btn btn-success" onclick="back()">Back</button>
-      <button type="button" class="btn btn-success next" onclick="recordLinkData()">Next</button>
+      <button type="button" class="btn btn-success next" onclick="recordLinkData(), next()">Next</button>
       <br><br>
     </div>
     
