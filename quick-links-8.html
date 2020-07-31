@@ -26,18 +26,7 @@
       <strong>Will your link be visible or hidden (behind an element such as an imagem, button or hyperlink text)?</strong><br><br>
       <div class="form-check">
         <label class="form-check-label">
-          <input class="form-check-input radio" type="radio" name="radios" value="Hidden" onclick="hideForm();">
-          This link will be hidden from the user
-        </label>
-        <div class="btn-group">
-          <a href="#" data-toggle="tooltip" data-placement="right" title="Branch links by default will assign a random string of characters to your link."><small>- what does this mean?</small></a>
-        </div>
-        <br>
-        <label id="summary">If the link will not be seen, we will generate a random string.</label>
-      </div><br>
-      <div class="form-check">
-        <label class="form-check-label">
-          <input class="form-check-input radio" type="radio" name="radios" value="Visible" onclick="showForm();">
+          <input class="form-check-input radio" type="radio" name="radios" value="Visible" onchange="showForm()">
           This link will be visible to the user
         </label>
         <div class="btn-group">
@@ -60,6 +49,17 @@
         </div>
         <br>
       </form><br>
+      <div class="form-check">
+        <label class="form-check-label">
+          <input class="form-check-input radio" type="radio" name="radios" value="Hidden" onchange="showForm()">
+          This link will be hidden from the user
+        </label>
+        <div class="btn-group">
+          <a href="#" data-toggle="tooltip" data-placement="right" title="Branch links by default will assign a random string of characters to your link."><small>- what does this mean?</small></a>
+        </div>
+        <br>
+        <label id="summary">If the link will not be seen, we will generate a random string.</label>
+      </div><br>
       <button type="button" class="btn btn-success" onclick="back()">Back</button>
       <button type="button" class="btn btn-success next" onclick="next(), setAlias()">Next</button></a>
       <br><br>

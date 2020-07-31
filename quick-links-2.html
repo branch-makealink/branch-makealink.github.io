@@ -26,7 +26,7 @@
       <strong>Do you want the app to open to the homepage or to a specific page?</strong><br><br>
       <div class="form-check cntr">
         <label class="form-check-label">
-          <input class="form-check-input radio" type="radio" name="radios" value="Homepage" onchange="showForm();">
+          <input class="form-check-input radio" type="radio" name="radios" value="Homepage" onchange="showForm()">
           <span>Homepage</span>
         </label>
         <div class="btn-group">
@@ -40,14 +40,14 @@
         <form class="key-value-form-container">
           <div class="form-group">
             <small class="form-text" required>For now, don't worry if your app isn't set up to handle $canonical_url. If you're unsure what to enter here, use your website's homepage.<br><br><b>$canonical_url</b></small>
-            <input type="value" class="form-control" id="homepage_canonical" placeholder="https://branch.io" onchange=>
+            <input type="value" class="form-control" id="homepage_canonical" placeholder="https://branch.io">
             <span><small id="canonical_warning"></small></span>
           </div>
         </form>
       </div><br>
       <div class="form-check">
         <label class="form-check-label">
-          <input class="form-check-input" type="radio" name="radios" value="Specific Page" onclick="showForm()">
+          <input class="form-check-input" type="radio" name="radios" value="Specific Page" onchange="showForm()">
           <span>Specific Page</span>
         </label>
         <div class="btn-group">
@@ -57,7 +57,7 @@
         <label id="summary">To open a specific page of your app, you'll need to have a deep link routing structure in place and add those parameters to your link. Apps use Key and Value pairs to tell the app what to do when opened.
         Common routing structures include canonical_url, deeplink_path, or simple keys such as page=account_summary.</label>
       </div>
-      <form id="inAppRoutes">
+      <form class="key-value-form-container">
         <div class="form-group">
           <small class="form-text text-muted">Enter your Key and Value pairs that correspond to the page you want to open in the app.
           If you don’t know your routing structure right now, you can click Continue and add later in the dashboard!</small><br>
@@ -72,9 +72,9 @@
         </div>
       </form><br>
       <button type="button" class="btn btn-success" onclick="back()">Back</button>
-      <button type="button" class="btn btn-success next" onclick="recordLinkData(), next()">Next</button>
+      <button type="button" class="btn btn-success next" onclick="recordLinkData()">Next</button>
       <br><br>
-    </div>
+    </div><br>
     
     <!-- JS, Popper.js, and jQuery -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>

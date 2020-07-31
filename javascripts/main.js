@@ -3,18 +3,36 @@ console.log(
   "Can't find what you're looking for? Check out https://wizard.docs.branch.io or reach out to support@branch.io!"
 );
 
+var formDisplay = document.querySelectorAll("[class=key-value-form-container]");
+var radioButtons = document.querySelectorAll('input[name="radios"]');
+
 // Bootstrap Tooltips
 $(document).ready(function () {
   $('[data-toggle="tooltip"]').tooltip();
+
+  if (formDisplay !== undefined) {
+    for (var i = 0; i < formDisplay.length; i++) {
+      formDisplay[i].style.display = "none";
+    }
+  } 
 });
 
+function showForm() {
+  for (var i = 0; i < formDisplay.length; i++) {
+    if (radioButtons[i].checked) {
+      formDisplay[i].style.display = "block";
+    
+    } else if (!radioButtons[i].checked) {
+      formDisplay[i].style.display = "none";
+    }
+  }
+};
 
 // event.data
 var data = Object.create(null);
 
 // final metadata 
 var finalJSON = {
-  type: 2
   // "tags": [tags],
   // campaign: campaign,
   // channel: channel,
@@ -28,8 +46,6 @@ var finalJSON = {
     // $marketing_title: linkTitle,
 	}
 };
-
-console.log(finalJSON)
 
 function storeLinkData(json) {
   return localStorage.setItem("final", JSON.stringify(json));
@@ -95,32 +111,7 @@ function userSelection() {
   }
 };
 
-// ------------- QUICK LINKS PAGE 2 -------------
-// Show specific page collapse
-var formDisplay = document.getElementsByClassName("key-value-form-container")[0];
-var inAppRoutes = document.getElementById("inAppRoutes")
-
-$(document).ready(function(){ 
-  if (formDisplay !== undefined || inAppRoutes !== undefined) {
-    formDisplay.style.display = 'none';
-    inAppRoutes.style.display = 'none'
-  } 
-});
-
-var radioButtons = document.querySelectorAll('input[name="radios"]');
-
-function showForm() {
-  if (radioButtons[0].checked) {
-    formDisplay.style.display = 'block';
-    inAppRoutes.style.display = 'none';  
-
-  } else if (radioButtons[1].checked) {
-    formDisplay.style.display = 'none';
-    inAppRoutes.style.display = 'block';    
-  }
-}
-
-// make finalJSON writable
+// make finalJSON public
 var rewrite = JSON.parse(localStorage.getItem("final"))
 
 // record user's link data
@@ -142,6 +133,7 @@ function recordLinkData() {
             (homepage.includes(".co"))) {
             rewrite.data["$canonical_url"] = homepage;
             storeLinkData(rewrite);
+            next();
 
           } else {
             alert("Please enter a valid $canonical_url.")
@@ -157,6 +149,9 @@ function recordLinkData() {
       if (keyInput !== "" && valueInput !== "") {
         rewrite.data[keyInput] = valueInput;
         storeLinkData(rewrite)
+        next();
+      } else {
+        next();
       }
     }
   }
@@ -309,6 +304,8 @@ function createLink() {
 
   var branchKey = localStorage.getItem("branchkey");
   branch.init(branchKey);
+
+  rewrite["type"] = 2;
 
   if (!rewrite.hasOwnProperty('$canonical_url')) {
     rewrite.data["$canonical_url"] = " "
