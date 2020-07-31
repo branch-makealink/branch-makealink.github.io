@@ -14,7 +14,7 @@ var data = Object.create(null);
 
 // final metadata 
 var finalJSON = {
-  'type': 2
+  type: 2
   // "tags": [tags],
   // campaign: campaign,
   // channel: channel,
@@ -28,6 +28,8 @@ var finalJSON = {
     // $marketing_title: linkTitle,
 	}
 };
+
+console.log(finalJSON)
 
 function storeLinkData(json) {
   return localStorage.setItem("final", JSON.stringify(json));
