@@ -14,7 +14,7 @@ var data = Object.create(null);
 
 // final metadata 
 var finalJSON = {
-  type: 2
+  'type': 2
   // "tags": [tags],
   // campaign: campaign,
   // channel: channel,
